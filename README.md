@@ -4,7 +4,7 @@
 
 ## 👥 Integrantes (Sweet Bytes)
 * **Segovia, Santiago Leonardo Uriel** - [PibeManopla1](https://github.com/PibeManopla1)
-* **Reynaga Ducos, Mariano** - [marianrdz](https://github.com/marianrd)
+* **Reynaga Ducos, Mariano** - [marianrd](https://github.com/marianrd)
 * **Castillo, Matias** - [matiascastillo2005-glitch](https://github.com/matiascastillo2005-glitch)
 
 ## 🏢 Cliente Real Elegido 
