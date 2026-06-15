@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tu Carrito — Freddy Bakes</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        cream:       '#FDF6EE',
+                        'cream-dk':  '#F2E4D0',
+                        caramel:     '#C97D4E',
+                        'car-light': '#E8C4A0',
+                        brown:       '#3D1F0A',
+                        'brown-md':  '#6B3A20',
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        body { background-color: #FDF6EE; font-family: 'Inter', sans-serif; }
+        .nav-blur { backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); }
+    </style>
+</head>
+<body class="text-brown">
+
+<header class="nav-blur bg-cream/80 sticky top-0 z-50 border-b border-car-light/30">
+    <nav class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+        <a href="index.html" class="flex items-center gap-3">
+            <img src="assets/img/logo.png" alt="Logo" class="h-11 w-11 rounded-full object-cover">
+            <span class="font-semibold text-brown-md">Freddy Bakes</span>
+        </a>
+        <a href="catalogo.html" class="text-[.82rem] font-medium text-brown-md hover:text-caramel">Volver al catálogo</a>
+    </nav>
+</header>
+
+<main class="max-w-4xl mx-auto px-6 py-16">
+    <h1 class="font-display text-4xl font-bold text-brown mb-8" style="font-family:'Playfair Display'">Tu pedido</h1>
+
+    <div class="grid lg:grid-cols-3 gap-8 items-start">
+        <div class="lg:col-span-2 bg-white rounded-2xl border border-cream-dk p-6 shadow-sm space-y-4">
+            <div class="flex items-center gap-4 pb-4 border-b border-cream-dk">
+                <img src="assets/img/Producto04.jpeg" class="w-16 h-16 rounded-xl object-cover">
+                <div class="flex-1">
+                    <h3 class="font-semibold text-[.95rem]">Cinnamon Rolls Clásicos</h3>
+                    <p class="text-xs text-brown-md/50">Cantidad: 6</p>
+                </div>
+                <p class="font-bold text-[.95rem] text-right">$7.200</p>
+            </div>
+        </div>
+
+        <div class="bg-white rounded-2xl border border-cream-dk p-6 shadow-sm">
+            <h2 class="font-semibold text-lg mb-4">Resumen</h2>
+            <div class="space-y-3 text-sm border-b border-cream-dk pb-4 mb-4">
+                <div class="flex justify-between text-brown-md/60"><span>Subtotal</span><span>$7.200</span></div>
+                <div class="flex justify-between text-brown-md/60"><span>Envío (Jujuy)</span><span class="text-emerald-600 font-medium">Gratis</span></div>
+            </div>
+            <div class="flex justify-between font-bold text-lg mb-6"><span>Total</span><span>$7.200</span></div>
+            <a href="checkout.html" class="block text-center w-full bg-brown text-cream font-semibold py-3.5 rounded-full hover:bg-caramel transition-colors">
+                Iniciar Compra
+            </a>
+        </div>
+    </div>
+</main>
+
+</body>
+</html>
