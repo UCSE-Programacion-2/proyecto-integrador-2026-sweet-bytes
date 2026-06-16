@@ -1,0 +1,697 @@
+<!doctype html>
+<html lang="es-AR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Freddy Bakes — Dulces Artesanales</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              cream: "#FDF6EE",
+              "cream-dk": "#F2E4D0",
+              caramel: "#C97D4E",
+              "car-light": "#E8C4A0",
+              brown: "#3D1F0A",
+              "brown-md": "#6B3A20",
+              blush: "#F4D5C8",
+            },
+            fontFamily: {
+              display: ['"Playfair Display"', "serif"],
+              body: ['"Inter"', "sans-serif"],
+            },
+            keyframes: {
+              marquee: {
+                "0%": { transform: "translateX(0)" },
+                "100%": { transform: "translateX(-50%)" },
+              },
+              fadeUp: {
+                "0%": { opacity: "0", transform: "translateY(24px)" },
+                "100%": { opacity: "1", transform: "translateY(0)" },
+              },
+            },
+            animation: {
+              marquee: "marquee 28s linear infinite",
+              fadeUp: "fadeUp .7s ease both",
+            },
+          },
+        },
+      };
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        background-color: #fdf6ee;
+        font-family: "Inter", sans-serif;
+      }
+
+      .hero-bg {
+        background: radial-gradient(
+          ellipse 80% 70% at 50% -10%,
+          #edd5bb 0%,
+          #fdf6ee 65%
+        );
+      }
+
+      .card {
+        transition:
+          transform 0.3s ease,
+          box-shadow 0.3s ease;
+      }
+      .card:hover {
+        transform: translateY(-7px);
+        box-shadow: 0 24px 48px rgba(61, 31, 10, 0.13);
+      }
+
+      .card .img-wrap {
+        overflow: hidden;
+      }
+      .card .img-wrap img {
+        transition: transform 0.45s ease;
+      }
+      .card:hover .img-wrap img {
+        transform: scale(1.08);
+      }
+
+      .nav-blur {
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
+      }
+
+      .tag {
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+        font-size: 0.7rem;
+        font-weight: 600;
+        padding: 3px 10px;
+        border-radius: 99px;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+      }
+
+      .blob {
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(72px);
+        opacity: 0.35;
+        pointer-events: none;
+      }
+
+      .section-label {
+        font-size: 0.7rem;
+        font-weight: 600;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: #c97d4e;
+        margin-bottom: 0.5rem;
+      }
+
+      ::-webkit-scrollbar {
+        width: 6px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #fdf6ee;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #c97d4e44;
+        border-radius: 99px;
+      }
+    </style>
+  </head>
+  <body class="text-brown overflow-x-hidden">
+    <header
+      class="nav-blur bg-cream/80 sticky top-0 z-50 border-b border-car-light/30"
+    >
+      <nav
+        class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between"
+      >
+        <a href="#" class="flex items-center gap-3 group">
+          <img
+            src="assets/img/logo.png"
+            alt="Freddy Bakes"
+            class="h-11 w-11 rounded-full object-cover shadow ring-2 ring-car-light group-hover:ring-caramel transition-all"
+          />
+          <span
+            class="font-display font-bold text-lg text-brown-md hidden sm:block"
+            >Freddy Bakes</span
+          >
+        </a>
+
+        <div
+          class="hidden md:flex items-center gap-7 text-[.82rem] font-medium text-brown-md"
+        >
+          <a href="catalogo.html" class="hover:text-caramel transition-colors"
+            >Productos</a
+          >
+          <a href="#nosotros" class="hover:text-caramel transition-colors"
+            >Nosotros</a
+          >
+          <a href="#contacto" class="hover:text-caramel transition-colors"
+            >Contacto</a
+          >
+        </div>
+
+        <a
+          href="carrito.html"
+          class="bg-brown text-cream text-[.8rem] font-semibold px-5 py-2.5 rounded-full hover:bg-caramel transition-colors shadow-md shadow-brown/10"
+        >
+          Mi Carrito
+        </a>
+      </nav>
+    </header>
+
+    <section
+      class="hero-bg relative min-h-[92vh] flex items-center justify-center px-6 py-24 overflow-hidden"
+    >
+      <div class="blob w-80 h-80 bg-blush top-[-4rem] left-[-4rem]"></div>
+      <div
+        class="blob w-96 h-96 bg-car-light bottom-[-6rem] right-[-6rem]"
+      ></div>
+
+      <div class="relative max-w-3xl mx-auto text-center animate-fadeUp">
+        <div class="relative inline-block mb-8">
+          <div
+            class="absolute inset-0 rounded-full bg-car-light blur-2xl opacity-60 scale-125"
+          ></div>
+          <img
+            src="assets/img/logo.png"
+            alt="Freddy Bakes"
+            class="relative h-44 w-44 mx-auto rounded-full object-cover shadow-2xl border-[5px] border-white ring-4 ring-car-light"
+          />
+        </div>
+
+        <p class="section-label">Hecho con amor</p>
+
+        <h1
+          class="font-display text-6xl md:text-7xl lg:text-8xl font-bold text-brown leading-[1.05] mb-6"
+        >
+          Tentate con lo<br />
+          <span class="text-caramel italic">artesanal</span>
+        </h1>
+
+        <p
+          class="text-brown-md/65 text-lg max-w-lg mx-auto leading-relaxed mb-10"
+        >
+          Pastelería en San Salvador de Jujuy. Horneamos cada pedido con
+          ingredientes frescos para garantizar un sabor único en tu mesa.
+        </p>
+
+        <div class="flex flex-col sm:flex-row gap-3 justify-center">
+          <a
+            href="catalogo.html"
+            class="bg-brown text-cream font-semibold px-9 py-4 rounded-full hover:bg-caramel transition-all shadow-lg shadow-brown/20 text-[.9rem]"
+          >
+            Ver el menú
+          </a>
+          <a
+            href="#contacto"
+            class="border-2 border-brown/20 text-brown-md font-semibold px-9 py-4 rounded-full hover:border-caramel hover:text-caramel transition-all text-[.9rem]"
+          >
+            Contactanos
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <div
+      class="bg-cream-dk py-3.5 overflow-hidden border-y border-car-light/30"
+    >
+      <div class="animate-marquee whitespace-nowrap flex gap-0">
+        <span class="inline-flex gap-0">
+          <span
+            class="mx-8 text-caramel/50 text-[.72rem] font-semibold tracking-[.2em] uppercase"
+            >✦ Budín de Vainilla</span
+          >
+          <span
+            class="mx-8 text-caramel/50 text-[.72rem] font-semibold tracking-[.2em] uppercase"
+            >✦ Cinnamon Rolls</span
+          >
+          <span
+            class="mx-8 text-caramel/50 text-[.72rem] font-semibold tracking-[.2em] uppercase"
+            >✦ Budín Marmolado</span
+          >
+          <span
+            class="mx-8 text-caramel/50 text-[.72rem] font-semibold tracking-[.2em] uppercase"
+            >✦ Carrot Cake</span
+          >
+          <span
+            class="mx-8 text-caramel/50 text-[.72rem] font-semibold tracking-[.2em] uppercase"
+            >✦ Budín de Banana</span
+          >
+          <span
+            class="mx-8 text-caramel/50 text-[.72rem] font-semibold tracking-[.2em] uppercase"
+            >✦ Dulce de Leche</span
+          >
+          <span
+            class="mx-8 text-caramel/50 text-[.72rem] font-semibold tracking-[.2em] uppercase"
+            >✦ Budín de Limón</span
+          >
+          <span
+            class="mx-8 text-caramel/50 text-[.72rem] font-semibold tracking-[.2em] uppercase"
+            >✦ Budín de Manzana</span
+          >
+        </span>
+        <span class="inline-flex gap-0" aria-hidden="true">
+          <span
+            class="mx-8 text-caramel/50 text-[.72rem] font-semibold tracking-[.2em] uppercase"
+            >✦ Budín de Vainilla</span
+          >
+          <span
+            class="mx-8 text-caramel/50 text-[.72rem] font-semibold tracking-[.2em] uppercase"
+            >✦ Cinnamon Rolls</span
+          >
+          <span
+            class="mx-8 text-caramel/50 text-[.72rem] font-semibold tracking-[.2em] uppercase"
+            >✦ Budín Marmolado</span
+          >
+          <span
+            class="mx-8 text-caramel/50 text-[.72rem] font-semibold tracking-[.2em] uppercase"
+            >✦ Carrot Cake</span
+          >
+          <span
+            class="mx-8 text-caramel/50 text-[.72rem] font-semibold tracking-[.2em] uppercase"
+            >✦ Budín de Banana</span
+          >
+          <span
+            class="mx-8 text-caramel/50 text-[.72rem] font-semibold tracking-[.2em] uppercase"
+            >✦ Dulce de Leche</span
+          >
+          <span
+            class="mx-8 text-caramel/50 text-[.72rem] font-semibold tracking-[.2em] uppercase"
+            >✦ Budín de Limón</span
+          >
+          <span
+            class="mx-8 text-caramel/50 text-[.72rem] font-semibold tracking-[.2em] uppercase"
+            >✦ Budín de Manzana</span
+          >
+        </span>
+      </div>
+    </div>
+
+    <section id="productos" class="py-28 px-6 bg-cream">
+      <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-16">
+          
+          <h2
+            class="font-display text-5xl md:text-6xl font-bold text-brown mb-4"
+          >
+            Lo que hacemos
+          </h2>
+          <p
+            class="text-brown-md/55 max-w-sm mx-auto text-[.93rem] leading-relaxed"
+          >
+            Preparados por encargo, con ingredientes frescos y recetas con alma.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-7">
+          <article
+            class="card bg-white rounded-[1.6rem] overflow-hidden border border-cream-dk shadow-sm"
+          >
+            <div class="img-wrap h-56">
+              <img
+                src="assets/img/Producto01.jpeg"
+                alt="Budín de Vainilla"
+                class="w-full h-full object-cover"
+              />
+            </div>
+            <div class="p-6">
+              <div class="flex items-center justify-between mb-2">
+                <h3 class="font-display text-[1.15rem] font-bold text-brown">
+                  Budín de Vainilla
+                </h3>
+                <span class="tag bg-amber-50 text-amber-700">🍰 Clásico</span>
+              </div>
+              <p class="text-brown-md/55 text-[.82rem] leading-relaxed">
+                Esponjoso, húmedo y con aroma natural a vainilla. La versión
+                clásica que nunca falla.
+              </p>
+              <div
+                class="mt-5 pt-4 border-t border-cream-dk flex items-center justify-between"
+              >
+                <span
+                  class="text-[.72rem] text-brown-md/35 font-semibold uppercase tracking-wide"
+                  >Por encargo</span
+                >
+                <a
+                  href="catalogo.html"
+                  class="text-caramel text-[.82rem] font-semibold hover:text-brown transition-colors"
+                  >Ver en catálogo →</a
+                >
+              </div>
+            </div>
+          </article>
+
+          <article
+            class="card bg-white rounded-[1.6rem] overflow-hidden border border-cream-dk shadow-sm"
+          >
+            <div class="img-wrap h-56">
+              <img
+                src="assets/img/Producto06.jpeg"
+                alt="Torta de frutos rojos"
+                class="w-full h-full object-cover"
+              />
+            </div>
+            <div class="p-6">
+              <div class="flex items-center justify-between mb-2">
+                <h3
+                  class="font-display text-[1.1rem] font-bold text-brown leading-tight"
+                >
+                  Torta de frutos rojos
+                </h3>
+                <span class="tag bg-amber-50 text-amber-800 shrink-0 ml-2"
+                  >🍮 Premium</span
+                >
+              </div>
+              <p class="text-brown-md/55 text-[.82rem] leading-relaxed">
+                Torta clásica decorada con abundantes frutos rojos.
+              </p>
+              <div
+                class="mt-5 pt-4 border-t border-cream-dk flex items-center justify-between"
+              >
+                <span
+                  class="text-[.72rem] text-brown-md/35 font-semibold uppercase tracking-wide"
+                  >Por encargo</span
+                >
+                <a
+                  href="catalogo.html"
+                  class="text-caramel text-[.82rem] font-semibold hover:text-brown transition-colors"
+                  >Ver en catálogo →</a
+                >
+              </div>
+            </div>
+          </article>
+
+          <article
+            class="card bg-white rounded-[1.6rem] overflow-hidden border border-cream-dk shadow-sm"
+          >
+            <div class="img-wrap h-56">
+              <img
+                src="assets/img/Producto07.jpeg"
+                alt="Lemon Pie"
+                class="w-full h-full object-cover"
+              />
+            </div>
+            <div class="p-6">
+              <div class="flex items-center justify-between mb-2">
+                <h3 class="font-display text-[1.15rem] font-bold text-brown">
+                  Lemon Pie
+                </h3>
+                <span class="tag bg-stone-50 text-stone-600">🍋 Favorito</span>
+              </div>
+              <p class="text-brown-md/55 text-[.82rem] leading-relaxed">
+                Esponjoso lemon pie. Perfecto para la hora del té.
+              </p>
+              <div
+                class="mt-5 pt-4 border-t border-cream-dk flex items-center justify-between"
+              >
+                <span
+                  class="text-[.72rem] text-brown-md/35 font-semibold uppercase tracking-wide"
+                  >Por encargo</span
+                >
+                <a
+                  href="catalogo.html"
+                  class="text-caramel text-[.82rem] font-semibold hover:text-brown transition-colors"
+                  >Ver en catálogo →</a
+                >
+              </div>
+            </div>
+          </article>
+
+          <article
+            class="card bg-white rounded-[1.6rem] overflow-hidden border border-cream-dk shadow-sm"
+          >
+            <div class="img-wrap h-56">
+              <img
+                src="assets/img/Producto03.jpeg"
+                alt="Budín de Carrot Cake"
+                class="w-full h-full object-cover"
+              />
+            </div>
+            <div class="p-6">
+              <div class="flex items-center justify-between mb-2">
+                <h3 class="font-display text-[1.15rem] font-bold text-brown">
+                  Budín de Carrot Cake
+                </h3>
+                <span class="tag bg-orange-50 text-orange-500"
+                  >🥕 Estrella</span
+                >
+              </div>
+              <p class="text-brown-md/55 text-[.82rem] leading-relaxed">
+                Zanahoria, canela y nueces, coronado con frosting de queso
+                crema. Un clásico reconvertido en budín.
+              </p>
+              <div
+                class="mt-5 pt-4 border-t border-cream-dk flex items-center justify-between"
+              >
+                <span
+                  class="text-[.72rem] text-brown-md/35 font-semibold uppercase tracking-wide"
+                  >Por encargo</span
+                >
+                <a
+                  href="catalogo.html"
+                  class="text-caramel text-[.82rem] font-semibold hover:text-brown transition-colors"
+                  >Ver en catálogo →</a
+                >
+              </div>
+            </div>
+          </article>
+
+          <article
+            class="card bg-white rounded-[1.6rem] overflow-hidden border border-cream-dk shadow-sm"
+          >
+            <div class="img-wrap h-56">
+              <img
+                src="assets/img/Producto02.jpeg"
+                alt="Budín de Limón"
+                class="w-full h-full object-cover"
+              />
+            </div>
+            <div class="p-6">
+              <div class="flex items-center justify-between mb-2">
+                <h3 class="font-display text-[1.15rem] font-bold text-brown">
+                  Budín de Limón
+                </h3>
+                <span class="tag bg-yellow-50 text-yellow-600">🍋 Fresco</span>
+              </div>
+              <p class="text-brown-md/55 text-[.82rem] leading-relaxed">
+                Glaseado de limón con ralladura fresca. Aromático, fresco y
+                perfectamente equilibrado.
+              </p>
+              <div
+                class="mt-5 pt-4 border-t border-cream-dk flex items-center justify-between"
+              >
+                <span
+                  class="text-[.72rem] text-brown-md/35 font-semibold uppercase tracking-wide"
+                  >Por encargo</span
+                >
+                <a
+                  href="catalogo.html"
+                  class="text-caramel text-[.82rem] font-semibold hover:text-brown transition-colors"
+                  >Ver en catálogo →</a
+                >
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <div class="mt-7">
+          <article
+            class="card bg-white rounded-[1.6rem] overflow-hidden border border-cream-dk shadow-sm grid md:grid-cols-2"
+          >
+            <div class="img-wrap h-64 md:h-auto">
+              <img
+                src="assets/img/Producto04.jpeg"
+                alt="Cinnamon Rolls Clásicos"
+                class="w-full h-full object-cover"
+              />
+            </div>
+            <div class="p-8 md:p-10 flex flex-col justify-center">
+    <span class="tag bg-amber-50 text-amber-800 self-start mb-4">🌀 Los imperdibles</span>
+    <h3 class="font-display text-3xl font-bold text-brown mb-3">Cinnamon Rolls Clásicos</h3>
+    <p class="text-brown-md/60 text-[.88rem] leading-relaxed mb-6">
+        Esponjosos, rellenos de canela y bañados en glaseado de crema.
+        Recién horneados para cada pedido, con ese aroma que no tiene comparación.
+        La estrella del menú que ningún cliente puede pedir solo una vez.
+    </p>
+    <a href="catalogo.html"
+       class="self-start bg-caramel text-cream font-semibold px-7 py-3 rounded-full
+              hover:bg-brown transition-colors text-[.85rem]">
+        Ver en catálogo →
+    </a>
+</div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="nosotros" class="py-28 px-6 bg-cream-dk">
+      <div
+        class="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 lg:gap-24 items-center"
+      >
+        <div>
+          <p class="section-label">Quiénes somos</p>
+          <h2
+            class="font-display text-5xl md:text-6xl font-bold text-brown leading-tight mb-6"
+          >
+            Una pasión que<br />
+            <span class="italic text-caramel">se convirtió</span><br />
+            en sabor
+          </h2>
+          <p class="text-brown-md/65 leading-relaxed mb-4 text-[.93rem]">
+            Freddy Bakes nació de las ganas de compartir lo que más nos gusta
+            hacer: hornear con amor y creatividad. Cada receta está pensada para
+            que cada bocado sea una experiencia especial.
+          </p>
+          <p class="text-brown-md/65 leading-relaxed mb-10 text-[.93rem]">
+            Trabajamos con ingredientes frescos y de calidad, preparing todo por
+            encargo para garantizar que llegue a tus manos recién salido del
+            horno, en su punto justo.
+          </p>
+
+          <div class="flex gap-10">
+            <div>
+              <p class="font-display text-4xl font-bold text-caramel">100%</p>
+              <p
+                class="text-[.78rem] text-brown-md/50 font-medium uppercase tracking-wide mt-1"
+              >
+                Artesanal
+              </p>
+            </div>
+            <div class="border-l border-car-light pl-10">
+              <p class="font-display text-4xl font-bold text-caramel">6+</p>
+              <p
+                class="text-[.78rem] text-brown-md/50 font-medium uppercase tracking-wide mt-1"
+              >
+                Productos únicos
+              </p>
+            </div>
+            <div class="border-l border-car-light pl-10">
+              <p class="font-display text-4xl font-bold text-caramel">♥</p>
+              <p
+                class="text-[.78rem] text-brown-md/50 font-medium uppercase tracking-wide mt-1"
+              >
+                Con amor
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-4">
+          <img
+            src="assets/img/Producto06.jpeg"
+            alt=""
+            class="rounded-2xl object-cover w-full h-52 shadow-lg"
+          />
+          <img
+            src="assets/img/Producto04.jpeg"
+            alt=""
+            class="rounded-2xl object-cover w-full h-52 shadow-lg mt-8"
+          />
+          <img
+            src="assets/img/Producto07.jpeg"
+            alt=""
+            class="rounded-2xl object-cover w-full h-52 shadow-lg"
+          />
+          <img
+            src="assets/img/Producto03.jpeg"
+            alt=""
+            class="rounded-2xl object-cover w-full h-52 shadow-lg mt-8"
+          />
+        </div>
+      </div>
+    </section>
+
+    <div class="bg-caramel py-14 px-6 text-center">
+      <br />
+    </div>
+
+    <section
+      id="contacto"
+      class="bg-brown text-cream py-28 px-6 relative overflow-hidden"
+    >
+      <div class="blob w-96 h-96 bg-caramel/30 top-[-6rem] right-[-6rem]"></div>
+
+      <div class="relative max-w-2xl mx-auto text-center">
+        <p class="section-label" style="color: #e8c4a0">Hacé tu pedido</p>
+        <h2
+          class="font-display text-5xl md:text-6xl font-bold mb-5 leading-tight"
+        >
+          ¿Se te antojó<br />
+          <span class="text-caramel italic">algo rico?</span>
+        </h2>
+        <p
+          class="text-cream/55 text-base max-w-sm mx-auto mb-10 leading-relaxed"
+        >
+          Escribinos con anticipación y preparamos lo que quieras. Pedidos
+          personalizados para eventos también disponibles.
+        </p>
+
+        <div class="flex flex-col sm:flex-row gap-4 justify-center mb-16">
+          <a
+            href="https://wa.me/54XXXXXXXXXX"
+            class="flex items-center justify-center gap-2 bg-[#25D366] text-white font-semibold px-8 py-4 rounded-full hover:brightness-110 transition-all text-[.88rem] shadow-lg"
+          >
+            <svg
+              class="w-5 h-5 shrink-0"
+              fill="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"
+              />
+            </svg>
+            WhatsApp
+          </a>
+
+          <a
+            href="https://instagram.com/"
+            class="flex items-center justify-center gap-2 text-white font-semibold px-8 py-4 rounded-full hover:brightness-110 transition-all text-[.88rem] shadow-lg"
+            style="
+              background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045);
+            "
+          >
+            <svg
+              class="w-5 h-5 shrink-0"
+              fill="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"
+              />
+            </svg>
+            Instagram
+          </a>
+        </div>
+
+        <div class="border-t border-cream/10 pt-10">
+          <img
+            src="assets/img/logo.png"
+            alt="Freddy Bakes"
+            class="h-14 w-14 rounded-full object-cover mx-auto mb-4 opacity-70"
+          />
+          <p class="font-display text-xl font-semibold text-car-light">
+            Freddy Bakes
+          </p>
+          <p class="text-cream/35 text-xs mt-1">
+            Hecho con amor · Todo por encargo
+          </p>
+          <p class="text-cream/20 text-[.7rem] mt-6">
+            © 2025 Freddy Bakes. Todos los derechos reservados.
+          </p>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>

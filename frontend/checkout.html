@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finalizar Pedido — Freddy Bakes</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        cream:       '#FDF6EE',
+                        'cream-dk':  '#F2E4D0',
+                        caramel:     '#C97D4E',
+                        brown:       '#3D1F0A',
+                        'brown-md':  '#6B3A20',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-cream text-brown">
+
+<main class="max-w-2xl mx-auto px-6 py-16">
+    <div class="text-center mb-10">
+        <img src="assets/img/logo.png" class="h-16 w-16 rounded-full mx-auto mb-4 object-cover">
+        <h1 class="text-3xl font-bold" style="font-family:'Playfair Display', serif">Datos de Entrega</h1>
+        <p class="text-sm text-brown-md/60 mt-1">Completá tus datos para coordinar el horneado y envío.</p>
+    </div>
+
+    <form class="bg-white rounded-2xl border border-cream-dk p-8 shadow-sm space-y-5">
+        <div>
+            <label class="block text-xs font-semibold uppercase tracking-wide text-brown-md/60 mb-2">Nombre Completo</label>
+            <input type="text" class="w-full bg-cream border border-cream-dk rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-caramel" placeholder="Ej: Juan Pérez">
+        </div>
+        <div>
+            <label class="block text-xs font-semibold uppercase tracking-wide text-brown-md/60 mb-2">Teléfono / WhatsApp</label>
+            <input type="tel" class="w-full bg-cream border border-cream-dk rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-caramel" placeholder="Ej: 3884XXXXXX">
+        </div>
+        <div>
+            <label class="block text-xs font-semibold uppercase tracking-wide text-brown-md/60 mb-2">Dirección de Entrega (San Salvador de Jujuy)</label>
+            <input type="text" class="w-full bg-cream border border-cream-dk rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-caramel" placeholder="Barrio, Calle y Altura">
+        </div>
+        <div>
+            <label class="block text-xs font-semibold uppercase tracking-wide text-brown-md/60 mb-2">Notas Especiales</label>
+            <textarea class="w-full bg-cream border border-cream-dk rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-caramel h-24" placeholder="Ej: Dedicatoria, horarios de entrega o aclaraciones por alergias..."></textarea>
+        </div>
+        
+        <button type="button" class="w-full bg-brown text-cream font-semibold py-4 rounded-full hover:bg-caramel transition-all mt-4 shadow-md shadow-brown/10">
+            Confirmar Pedido vía WhatsApp
+        </button>
+    </form>
+</main>
+
+</body>
+</html>

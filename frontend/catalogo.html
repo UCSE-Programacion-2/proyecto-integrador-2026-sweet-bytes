@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo — Freddy Bakes</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        cream:       '#FDF6EE',
+                        'cream-dk':  '#F2E4D0',
+                        caramel:     '#C97D4E',
+                        'car-light': '#E8C4A0',
+                        brown:       '#3D1F0A',
+                        'brown-md':  '#6B3A20',
+                        blush:       '#F4D5C8',
+                    },
+                    fontFamily: {
+                        display: ['"Playfair Display"', 'serif'],
+                        body:    ['"Inter"', 'sans-serif'],
+                    },
+                    keyframes: {
+                        fadeUp:  { '0%': { opacity: '0', transform: 'translateY(24px)' }, '100%': { opacity: '1', transform: 'translateY(0)' } },
+                    },
+                    animation: {
+                        fadeUp:  'fadeUp .7s ease both',
+                    },
+                }
+            }
+        }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        html { scroll-behavior: smooth; }
+        body { background-color: #FDF6EE; font-family: 'Inter', sans-serif; }
+        .nav-blur { backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); }
+        .card { transition: transform .3s ease, box-shadow .3s ease; }
+        .card:hover { transform: translateY(-7px); box-shadow: 0 24px 48px rgba(61,31,10,.13); }
+        .card .img-wrap { overflow: hidden; }
+        .card .img-wrap img { transition: transform .45s ease; }
+        .card:hover .img-wrap img { transform: scale(1.08); }
+        .tag { display: inline-flex; align-items: center; gap: 4px; font-size: .7rem; font-weight: 600; padding: 3px 10px; border-radius: 99px; text-transform: uppercase; letter-spacing: .05em; }
+        .blob { position: absolute; border-radius: 50%; filter: blur(72px); opacity: .35; pointer-events: none; }
+    </style>
+</head>
+<body class="text-brown overflow-x-hidden">
+
+<header class="nav-blur bg-cream/80 sticky top-0 z-50 border-b border-car-light/30">
+    <nav class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+        <a href="index.html" class="flex items-center gap-3 group">
+            <img src="assets/img/logo.png" alt="Freddy Bakes" class="h-11 w-11 rounded-full object-cover shadow ring-2 ring-car-light group-hover:ring-caramel transition-all">
+            <span class="font-display font-bold text-lg text-brown-md hidden sm:block">Freddy Bakes</span>
+        </a>
+        <div class="hidden md:flex items-center gap-7 text-[.82rem] font-medium text-brown-md">
+            <a href="catalogo.html" class="text-caramel transition-colors font-semibold">Productos</a>
+            <a href="index.html#nosotros" class="hover:text-caramel transition-colors">Nosotros</a>
+            <a href="index.html#contacto" class="hover:text-caramel transition-colors">Contacto</a>
+        </div>
+        <a href="carrito.html" class="bg-brown text-cream text-[.8rem] font-semibold px-5 py-2.5 rounded-full hover:bg-caramel transition-colors shadow-md shadow-brown/10">
+            Mi Carrito
+        </a>
+    </nav>
+</header>
+
+<main class="max-w-7xl mx-auto px-6 py-16 animate-fadeUp relative">
+    <div class="blob w-72 h-72 bg-blush top-10 left-[-4rem]"></div>
+    
+    <div class="text-center mb-12">
+        <h1 class="font-display text-5xl font-bold text-brown mb-3">Nuestro Catálogo</h1>
+        <p class="text-brown-md/60 max-w-md mx-auto text-[.95rem]">Explorá todas nuestras delicias horneadas listas para alegrar tus tardes.</p>
+    </div>
+
+    <div class="flex flex-col lg:flex-row gap-10">
+        
+        <aside class="lg:w-1/4 shrink-0">
+            <div class="bg-white p-6 rounded-2xl border border-cream-dk shadow-sm sticky top-24">
+                <h3 class="font-bold text-brown mb-5 text-lg border-b border-cream-dk pb-3">Filtrar menú</h3>
+
+                <div class="mb-6">
+                    <h4 class="text-xs font-bold text-brown-md/60 uppercase tracking-wide mb-3">Categorías</h4>
+                    <ul class="space-y-2.5 text-sm text-brown-md/80">
+                        <li><button class="font-semibold text-caramel w-full text-left">Todos los productos</button></li>
+                        <li><button class="hover:text-caramel transition-colors w-full text-left">Budines</button></li>
+                        <li><button class="hover:text-caramel transition-colors w-full text-left">Tortas</button></li>
+                        <li><button class="hover:text-caramel transition-colors w-full text-left">Individuales</button></li>
+                        <li><button class="hover:text-caramel transition-colors w-full text-left">Pastelería Fina</button></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-xs font-bold text-brown-md/60 uppercase tracking-wide mb-3">Etiquetas</h4>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="tag bg-amber-50 text-amber-700 cursor-pointer hover:bg-amber-100">🍰 Clásico</span>
+                        <span class="tag bg-orange-50 text-orange-500 cursor-pointer hover:bg-orange-100">🥕 Estrella</span>
+                        <span class="tag bg-stone-50 text-stone-600 cursor-pointer hover:bg-stone-100">🍋 Favorito</span>
+                        <span class="tag bg-amber-50 text-amber-800 cursor-pointer hover:bg-amber-100">🌀 Imperdible</span>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <div class="lg:w-3/4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-7">
+            
+            <article class="card bg-white rounded-[1.6rem] overflow-hidden border border-cream-dk shadow-sm">
+                <div class="img-wrap h-56">
+                    <img src="assets/img/Producto01.jpeg" alt="Budín de Vainilla" class="w-full h-full object-cover">
+                </div>
+                <div class="p-6">
+                    <div class="flex items-center justify-between mb-2">
+                        <h3 class="font-display text-[1.15rem] font-bold text-brown">Budín de Vainilla</h3>
+                        <span class="tag bg-amber-50 text-amber-700">🍰 Clásico</span>
+                    </div>
+                    <p class="text-brown-md/55 text-[.82rem] leading-relaxed mb-5">Esponjoso, húmedo y con aroma natural a vainilla.</p>
+                    <div class="pt-4 border-t border-cream-dk flex items-center justify-between">
+                        <span class="text-lg font-bold text-brown-md">$4.500</span>
+                        <a href="detalle.html" class="bg-brown/5 hover:bg-caramel hover:text-white text-caramel text-[.8rem] font-semibold px-4 py-2 rounded-full transition-all">Ver Detalle</a>
+                    </div>
+                </div>
+            </article>
+
+            <article class="card bg-white rounded-[1.6rem] overflow-hidden border border-cream-dk shadow-sm">
+                <div class="img-wrap h-56">
+                    <img src="assets/img/Producto06.jpeg" alt="Torta de frutos rojos" class="w-full h-full object-cover">
+                </div>
+                <div class="p-6">
+                    <div class="flex items-center justify-between mb-2">
+                        <h3 class="font-display text-[1.1rem] font-bold text-brown leading-tight">Torta de frutos rojos</h3>
+                        <span class="tag bg-amber-50 text-amber-800 shrink-0 ml-2">🍮 Premium</span>
+                    </div>
+                    <p class="text-brown-md/55 text-[.82rem] leading-relaxed mb-5">Torta clásica decorada con abundantes frutos rojos.</p>
+                    <div class="pt-4 border-t border-cream-dk flex items-center justify-between">
+                        <span class="text-lg font-bold text-brown-md">$8.500</span>
+                        <a href="detalle.html" class="bg-brown/5 hover:bg-caramel hover:text-white text-caramel text-[.8rem] font-semibold px-4 py-2 rounded-full transition-all">Ver Detalle</a>
+                    </div>
+                </div>
+            </article>
+
+            <article class="card bg-white rounded-[1.6rem] overflow-hidden border border-cream-dk shadow-sm">
+                <div class="img-wrap h-56">
+                    <img src="assets/img/Producto07.jpeg" alt="Lemon Pie" class="w-full h-full object-cover">
+                </div>
+                <div class="p-6">
+                    <div class="flex items-center justify-between mb-2">
+                        <h3 class="font-display text-[1.15rem] font-bold text-brown">Lemon Pie</h3>
+                        <span class="tag bg-stone-50 text-stone-600">🍋 Favorito</span>
+                    </div>
+                    <p class="text-brown-md/55 text-[.82rem] leading-relaxed mb-5">Esponjoso lemon pie. Perfecto para la hora del té.</p>
+                    <div class="pt-4 border-t border-cream-dk flex items-center justify-between">
+                        <span class="text-lg font-bold text-brown-md">$7.200</span>
+                        <a href="detalle.html" class="bg-brown/5 hover:bg-caramel hover:text-white text-caramel text-[.8rem] font-semibold px-4 py-2 rounded-full transition-all">Ver Detalle</a>
+                    </div>
+                </div>
+            </article>
+
+            <article class="card bg-white rounded-[1.6rem] overflow-hidden border border-cream-dk shadow-sm">
+                <div class="img-wrap h-56">
+                    <img src="assets/img/Producto03.jpeg" alt="Budín de Carrot Cake" class="w-full h-full object-cover">
+                </div>
+                <div class="p-6">
+                    <div class="flex items-center justify-between mb-2">
+                        <h3 class="font-display text-[1.15rem] font-bold text-brown">Budín de Carrot Cake</h3>
+                        <span class="tag bg-orange-50 text-orange-500">🥕 Estrella</span>
+                    </div>
+                    <p class="text-brown-md/55 text-[.82rem] leading-relaxed mb-5">Zanahoria, canela y nueces, coronado con frosting de queso crema.</p>
+                    <div class="pt-4 border-t border-cream-dk flex items-center justify-between">
+                        <span class="text-lg font-bold text-brown-md">$5.200</span>
+                        <a href="detalle.html" class="bg-brown/5 hover:bg-caramel hover:text-white text-caramel text-[.8rem] font-semibold px-4 py-2 rounded-full transition-all">Ver Detalle</a>
+                    </div>
+                </div>
+            </article>
+
+            <article class="card bg-white rounded-[1.6rem] overflow-hidden border border-cream-dk shadow-sm">
+                <div class="img-wrap h-56">
+                    <img src="assets/img/Producto02.jpeg" alt="Budín de Limón" class="w-full h-full object-cover">
+                </div>
+                <div class="p-6">
+                    <div class="flex items-center justify-between mb-2">
+                        <h3 class="font-display text-[1.15rem] font-bold text-brown">Budín de Limón</h3>
+                        <span class="tag bg-yellow-50 text-yellow-600">🍋 Fresco</span>
+                    </div>
+                    <p class="text-brown-md/55 text-[.82rem] leading-relaxed mb-5">Glaseado de limón con ralladura fresca. Aromático y equilibrado.</p>
+                    <div class="pt-4 border-t border-cream-dk flex items-center justify-between">
+                        <span class="text-lg font-bold text-brown-md">$4.500</span>
+                        <a href="detalle.html" class="bg-brown/5 hover:bg-caramel hover:text-white text-caramel text-[.8rem] font-semibold px-4 py-2 rounded-full transition-all">Ver Detalle</a>
+                    </div>
+                </div>
+            </article>
+
+            <article class="card bg-white rounded-[1.6rem] overflow-hidden border border-cream-dk shadow-sm">
+                <div class="img-wrap h-56">
+                    <img src="assets/img/Producto04.jpeg" alt="Cinnamon Rolls Clásicos" class="w-full h-full object-cover">
+                </div>
+                <div class="p-6">
+                    <div class="flex items-center justify-between mb-2">
+                        <h3 class="font-display text-[1.15rem] font-bold text-brown">Cinnamon Rolls</h3>
+                        <span class="tag bg-amber-50 text-amber-800">🌀 Imperdible</span>
+                    </div>
+                    <p class="text-brown-md/55 text-[.82rem] leading-relaxed mb-5">Esponjosos, rellenos de mucha canela y bañados en glaseado de crema.</p>
+                    <div class="pt-4 border-t border-cream-dk flex items-center justify-between">
+                        <span class="text-lg font-bold text-brown-md">$1.200</span>
+                        <a href="detalle.html" class="bg-brown/5 hover:bg-caramel hover:text-white text-caramel text-[.8rem] font-semibold px-4 py-2 rounded-full transition-all">Ver Detalle</a>
+                    </div>
+                </div>
+            </article>
+
+        </div>
+    </div>
+</main>
+
+<section id="contacto" class="bg-brown text-cream py-24 px-6 relative overflow-hidden mt-10">
+    <div class="relative max-w-2xl mx-auto text-center">
+        <h2 class="font-display text-4xl font-bold mb-4">¿Hacemos tu pedido realidad?</h2>
+        <p class="text-cream/55 text-sm max-w-sm mx-auto mb-8">Escribinos y coordinamos la entrega de tus dulces favoritos.</p>
+        <div class="border-t border-cream/10 pt-8">
+            <img src="assets/img/logo.png" alt="Logo" class="h-12 w-12 rounded-full object-cover mx-auto mb-3 opacity-60">
+            <p class="font-display text-lg font-semibold text-car-light">Freddy Bakes</p>
+            <p class="text-cream/20 text-[.7rem] mt-4">© 2025 Freddy Bakes. Todos los derechos reservados. | <a href="admin.html" class="hover:text-caramel transition-colors underline opacity-50 hover:opacity-100">Acceso Personal</a></p>
+        </div>
+    </div>
+</section>
+
+</body>
+</html>
