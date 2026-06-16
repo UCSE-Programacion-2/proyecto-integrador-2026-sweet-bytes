@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle de Producto — Freddy Bakes</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        cream:       '#FDF6EE',
+                        'cream-dk':  '#F2E4D0',
+                        caramel:     '#C97D4E',
+                        'car-light': '#E8C4A0',
+                        brown:       '#3D1F0A',
+                        'brown-md':  '#6B3A20',
+                        blush:       '#F4D5C8',
+                    },
+                    fontFamily: {
+                        display: ['"Playfair Display"', 'serif'],
+                        body:    ['"Inter"', 'sans-serif'],
+                    },
+                    keyframes: {
+                        fadeUp:  { '0%': { opacity: '0', transform: 'translateY(24px)' }, '100%': { opacity: '1', transform: 'translateY(0)' } },
+                    },
+                    animation: {
+                        fadeUp:  'fadeUp .7s ease both',
+                    },
+                }
+            }
+        }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        html { scroll-behavior: smooth; }
+        body { background-color: #FDF6EE; font-family: 'Inter', sans-serif; }
+        .nav-blur { backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); }
+    </style>
+</head>
+<body class="text-brown overflow-x-hidden">
+
+<header class="nav-blur bg-cream/80 sticky top-0 z-50 border-b border-car-light/30">
+    <nav class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+        <a href="index.html" class="flex items-center gap-3 group">
+            <img src="assets/img/logo.png" alt="Freddy Bakes" class="h-11 w-11 rounded-full object-cover shadow ring-2 ring-car-light group-hover:ring-caramel transition-all">
+            <span class="font-display font-bold text-lg text-brown-md hidden sm:block">Freddy Bakes</span>
+        </a>
+        <div class="hidden md:flex items-center gap-7 text-[.82rem] font-medium text-brown-md">
+            <a href="catalogo.html" class="hover:text-caramel transition-colors">Productos</a>
+            <a href="index.html#nosotros" class="hover:text-caramel transition-colors">Nosotros</a>
+            <a href="index.html#contacto" class="hover:text-caramel transition-colors">Contacto</a>
+        </div>
+        <a href="carrito.html" class="bg-brown text-cream text-[.8rem] font-semibold px-5 py-2.5 rounded-full hover:bg-caramel transition-colors">Mi Carrito</a>
+    </nav>
+</header>
+
+<main class="max-w-5xl mx-auto px-6 py-16 animate-fadeUp">
+    <div class="grid md:grid-cols-2 gap-12 items-center bg-white p-8 md:p-12 rounded-[2rem] border border-cream-dk shadow-sm">
+        <div class="rounded-2xl overflow-hidden h-[400px] shadow-inner">
+            <img src="assets/img/Producto04.jpeg" alt="Producto" class="w-full h-full object-cover">
+        </div>
+
+        <div>
+            <span class="text-caramel text-[.75rem] font-bold tracking-wider uppercase bg-orange-50 px-3 py-1 rounded-full">🌀 Los Imperdibles</span>
+            <h1 class="font-display text-4xl font-bold text-brown mt-3 mb-2">Cinnamon Rolls Clásicos</h1>
+            <p class="text-2xl font-bold text-caramel mb-6">$1.200 <span class="text-sm font-normal text-brown-md/50">/ unidad</span></p>
+            
+            <p class="text-brown-md/70 text-[.92rem] leading-relaxed mb-6">
+                Esponjosos, rellenos de canela de primera calidad y bañados en un suave glaseado de crema. Horneados exclusivamente por encargo para garantizar frescura absoluta.
+            </p>
+
+            <div class="flex items-center gap-4 mb-8">
+                <div class="flex items-center border border-car-light rounded-full bg-cream">
+                    <button class="px-4 py-2 font-bold text-brown-md hover:text-caramel">-</button>
+                    <span class="px-2 font-medium">1</span>
+                    <button class="px-4 py-2 font-bold text-brown-md hover:text-caramel">+</button>
+                </div>
+                <a href="carrito.html" class="flex-1 text-center bg-brown text-cream font-semibold py-3.5 rounded-full hover:bg-caramel transition-all shadow-md">
+                    Agregar al carrito
+                </a>
+            </div>
+            
+            <div class="border-t border-cream-dk pt-4 text-xs text-brown-md/40 font-medium uppercase tracking-wide">
+                Categoría: Pastelería Fina • Pedido Mínimo: 6 unidades
+            </div>
+        </div>
+    </div>
+</main>
+
+<footer class="bg-brown text-cream py-16 px-6 text-center border-t border-car-light/10">
+    <p class="font-display text-lg text-car-light font-semibold">Freddy Bakes</p>
+    <p class="text-cream/20 text-[.7rem] mt-2">© 2025 Freddy Bakes. Todos los derechos reservados.</p>
+</footer>
+
+</body>
+</html>

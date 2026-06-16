@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Control — Freddy Bakes</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        cream:       '#FDF6EE',
+                        'cream-dk':  '#F2E4D0',
+                        caramel:     '#C97D4E',
+                        brown:       '#3D1F0A',
+                        'brown-md':  '#6B3A20',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        html { scroll-behavior: smooth; }
+    </style>
+</head>
+<body class="bg-slate-50 text-brown">
+
+<header class="bg-brown text-cream h-16 px-6 flex items-center justify-between shadow-md">
+    <div class="flex items-center gap-3">
+        <div class="bg-caramel p-1.5 rounded-lg text-xs font-bold font-mono">FB</div>
+        <span class="font-medium text-sm tracking-wide">Freddy Bakes — Administración</span>
+    </div>
+    <a href="index.html" class="text-xs bg-white/10 hover:bg-white/20 px-4 py-2 rounded-lg transition-colors">Cerrar Sesión</a>
+</header>
+
+<main class="max-w-5xl mx-auto px-6 py-12">
+    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
+        <div>
+            <h1 class="text-2xl font-bold text-brown">Gestión de Stock e Inventario</h1>
+            <p class="text-xs text-slate-500 mt-0.5">Listado maestro y actualización de precios de alta rotación.</p>
+        </div>
+        <a href="#nuevo-producto" class="bg-caramel text-cream text-xs font-semibold px-4 py-2.5 rounded-lg hover:bg-brown transition-colors self-start shadow-md shadow-caramel/20">
+            + Agregar Nuevo Producto
+        </a>
+    </div>
+
+    <div class="bg-white rounded-xl border border-slate-200 overflow-hidden shadow-sm mb-12">
+        <table class="w-full text-left border-collapse">
+            <thead>
+                <tr class="bg-slate-100 text-slate-600 text-[.72rem] uppercase font-bold tracking-wider border-b border-slate-200">
+                    <th class="py-3 px-6">Producto</th>
+                    <th class="py-3 px-6">Categoría</th>
+                    <th class="py-3 px-6">Precio</th>
+                    <th class="py-3 px-6 text-center">Acciones</th>
+                </tr>
+            </thead>
+            <tbody class="text-sm divide-y divide-slate-100">
+                <tr class="hover:bg-slate-50/80 transition-colors">
+                    <td class="py-4 px-6 font-medium">Cinnamon Rolls Clásicos</td>
+                    <td class="py-4 px-6 text-slate-500 text-xs">Pastelería Fina</td>
+                    <td class="py-4 px-6 font-mono font-semibold">$1.200</td>
+                    <td class="py-4 px-6">
+                        <div class="flex items-center justify-center gap-3">
+                            <button class="text-xs font-semibold text-blue-600 hover:underline">Editar</button>
+                            <button class="text-xs font-semibold text-red-500 hover:underline">Eliminar</button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <section id="nuevo-producto" class="bg-white rounded-xl border border-slate-200 p-8 shadow-sm">
+        <div class="border-b border-slate-200 pb-4 mb-6">
+            <h2 class="text-lg font-bold text-brown">Cargar Nuevo Producto</h2>
+            <p class="text-xs text-slate-500 mt-1">Completá los datos para dar de alta una nueva preparación en el catálogo.</p>
+        </div>
+
+        <form class="space-y-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 uppercase tracking-wide mb-2">Nombre del Producto</label>
+                    <input type="text" placeholder="Ej: Torta de Frutos Rojos" class="w-full border border-slate-300 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:border-caramel focus:ring-1 focus:ring-caramel">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 uppercase tracking-wide mb-2">Precio de Venta ($)</label>
+                    <input type="number" placeholder="Ej: 8500" class="w-full border border-slate-300 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:border-caramel focus:ring-1 focus:ring-caramel">
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 uppercase tracking-wide mb-2">Categoría Principal</label>
+                    <select class="w-full border border-slate-300 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:border-caramel focus:ring-1 focus:ring-caramel bg-white">
+                        <option>Budines</option>
+                        <option>Tortas</option>
+                        <option>Individuales</option>
+                        <option>Pastelería Fina</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 uppercase tracking-wide mb-2">Etiqueta Destacada (Tag visual)</label>
+                    <select class="w-full border border-slate-300 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:border-caramel focus:ring-1 focus:ring-caramel bg-white">
+                        <option>Ninguna</option>
+                        <option>🍰 Clásico</option>
+                        <option>🍮 Premium</option
