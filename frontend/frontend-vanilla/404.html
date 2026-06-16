@@ -15,17 +15,28 @@
                         caramel:     '#C97D4E',
                         'car-light': '#E8C4A0',
                         brown:       '#3D1F0A',
-                    }
+                        'brown-md':  '#6B3A20',
+                        blush:       '#F4D5C8',
+                    },
+                    fontFamily: {
+                        display: ['"Playfair Display"', 'serif'],
+                        body:    ['"Inter"', 'sans-serif'],
+                    },
                 }
             }
         }
     </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        body { background-color: #FDF6EE; font-family: 'Inter', sans-serif; }
+    </style>
 </head>
 <body class="bg-cream text-brown h-[100vh] flex flex-col items-center justify-center px-6">
 
     <div class="text-center max-w-sm">
         <span class="text-7xl">🍰</span>
-        <h1 class="font-bold text-4xl mt-6 mb-3" style="font-family:'Playfair Display', serif; color:#3D1F0A">¡Ups! Algo salió mal</h1>
+        <h1 class="font-display font-bold text-4xl mt-6 mb-3">¡Ups! Algo salió mal</h1>
         <p class="text-sm text-brown/60 leading-relaxed mb-8">
             Parece que el dulce trozo de página que estabas buscando se cayó del horno o no existe en nuestra pastelería.
         </p>

@@ -16,12 +16,18 @@
                         'car-light': '#E8C4A0',
                         brown:       '#3D1F0A',
                         'brown-md':  '#6B3A20',
-                    }
+                        blush:       '#F4D5C8',
+                    },
+                    fontFamily: {
+                        display: ['"Playfair Display"', 'serif'],
+                        body:    ['"Inter"', 'sans-serif'],
+                    },
                 }
             }
         }
     </script>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         body { background-color: #FDF6EE; font-family: 'Inter', sans-serif; }
         .nav-blur { backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); }
@@ -33,7 +39,7 @@
     <nav class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
         <a href="index.html" class="flex items-center gap-3">
             <img src="assets/img/logo.png" alt="Logo" class="h-11 w-11 rounded-full object-cover">
-            <span class="font-semibold text-brown-md">Freddy Bakes</span>
+            <span class="font-display font-bold text-lg text-brown-md hidden sm:block">Freddy Bakes</span>
         </a>
         <a href="catalogo.html" class="text-[.82rem] font-medium text-brown-md hover:text-caramel">Volver al catálogo</a>
     </nav>
@@ -58,7 +64,7 @@
             <h2 class="font-semibold text-lg mb-4">Resumen</h2>
             <div class="space-y-3 text-sm border-b border-cream-dk pb-4 mb-4">
                 <div class="flex justify-between text-brown-md/60"><span>Subtotal</span><span>$7.200</span></div>
-                <div class="flex justify-between text-brown-md/60"><span>Envío (Jujuy)</span><span class="text-emerald-600 font-medium">Gratis</span></div>
+                <div class="flex justify-between text-brown-md/60"><span>Envío (Jujuy)</span><span class="text-caramel font-medium">Gratis</span></div>
             </div>
             <div class="flex justify-between font-bold text-lg mb-6"><span>Total</span><span>$7.200</span></div>
             <a href="checkout.html" class="block text-center w-full bg-brown text-cream font-semibold py-3.5 rounded-full hover:bg-caramel transition-colors">

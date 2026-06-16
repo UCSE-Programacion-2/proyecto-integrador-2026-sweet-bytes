@@ -13,20 +13,32 @@
                         cream:       '#FDF6EE',
                         'cream-dk':  '#F2E4D0',
                         caramel:     '#C97D4E',
+                        'car-light': '#E8C4A0',
                         brown:       '#3D1F0A',
                         'brown-md':  '#6B3A20',
-                    }
+                        blush:       '#F4D5C8',
+                    },
+                    fontFamily: {
+                        display: ['"Playfair Display"', 'serif'],
+                        body:    ['"Inter"', 'sans-serif'],
+                    },
                 }
             }
         }
     </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        html { scroll-behavior: smooth; }
+        body { background-color: #FDF6EE; font-family: 'Inter', sans-serif; }
+    </style>
 </head>
 <body class="bg-cream text-brown">
 
 <main class="max-w-2xl mx-auto px-6 py-16">
     <div class="text-center mb-10">
         <img src="assets/img/logo.png" class="h-16 w-16 rounded-full mx-auto mb-4 object-cover">
-        <h1 class="text-3xl font-bold" style="font-family:'Playfair Display', serif">Datos de Entrega</h1>
+        <h1 class="font-display text-3xl font-bold">Datos de Entrega</h1>
         <p class="text-sm text-brown-md/60 mt-1">Completá tus datos para coordinar el horneado y envío.</p>
     </div>
 
