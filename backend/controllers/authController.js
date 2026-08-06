@@ -1,65 +1,49 @@
 const User = require('../models/User');
+const asyncHandler = require('../middlewares/asyncHandler');
+const AppError = require('../middlewares/AppError');
 
-async function register(req, res) {
+const register = asyncHandler(async (req, res) => {
+  const { name, email, password } = req.body;
+
+  if (!name || !email || !password) {
+    throw new AppError(400, 'BAD_REQUEST', 'name, email y password son obligatorios');
+  }
+
+  let user;
   try {
-    const { name, email, password } = req.body;
-
-    if (!name || !email || !password) {
-      res.status(400).json({
-        error: { code: 'BAD_REQUEST', message: 'name, email y password son obligatorios' },
-      });
-      return;
-    }
-
-    const user = await User.create({ name, email, password });
-
-    res.status(201).json({
-      user: { id: user._id, name: user.name, email: user.email, role: user.role },
-    });
+    user = await User.create({ name, email, password });
   } catch (err) {
     if (err.code === 11000) {
-      res.status(400).json({ error: { code: 'BAD_REQUEST', message: 'El email ya está registrado' } });
-      return;
+      throw new AppError(400, 'BAD_REQUEST', 'El email ya está registrado');
     }
     if (err.name === 'ValidationError') {
-      res.status(400).json({ error: { code: 'BAD_REQUEST', message: err.message } });
-      return;
+      throw new AppError(400, 'BAD_REQUEST', err.message);
     }
-    res.status(500).json({ error: { code: 'INTERNAL_ERROR', message: 'Error al registrar el usuario' } });
+    throw err;
   }
-}
 
-async function login(req, res) {
-  try {
-    const { email, password } = req.body;
+  res.status(201).json({
+    user: { id: user._id, name: user.name, email: user.email, role: user.role },
+  });
+});
 
-    if (!email || !password) {
-      res.status(400).json({
-        error: { code: 'BAD_REQUEST', message: 'email y password son obligatorios' },
-      });
-      return;
-    }
+const login = asyncHandler(async (req, res) => {
+  const { email, password } = req.body;
 
-    const user = await User.findOne({ email });
-
-    if (!user) {
-      res.status(401).json({ error: { code: 'UNAUTHORIZED', message: 'Credenciales inválidas' } });
-      return;
-    }
-
-    const isMatch = await user.comparePassword(password);
-
-    if (!isMatch) {
-      res.status(401).json({ error: { code: 'UNAUTHORIZED', message: 'Credenciales inválidas' } });
-      return;
-    }
-
-    res.status(200).json({
-      user: { id: user._id, name: user.name, role: user.role },
-    });
-  } catch (err) {
-    res.status(500).json({ error: { code: 'INTERNAL_ERROR', message: 'Error al iniciar sesión' } });
+  if (!email || !password) {
+    throw new AppError(400, 'BAD_REQUEST', 'email y password son obligatorios');
   }
-}
+
+  const user = await User.findOne({ email });
+  const isMatch = user && (await user.comparePassword(password));
+
+  if (!isMatch) {
+    throw new AppError(401, 'UNAUTHORIZED', 'Credenciales inválidas');
+  }
+
+  res.status(200).json({
+    user: { id: user._id, name: user.name, role: user.role },
+  });
+});
 
 module.exports = { register, login };
