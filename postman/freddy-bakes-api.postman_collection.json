@@ -1,0 +1,340 @@
+{
+  "info": {
+    "_postman_id": "ceb68605-482c-4802-987a-c4aaacef1e31",
+    "name": "Freddy Bakes API - Sprint 2",
+    "description": "Colección de endpoints de Auth, Products y Cart. La API no usa JWT: la autorización de rutas de admin y carrito se hace con el header 'x-user-id', mandando el id de un usuario ya registrado.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "57199166",
+    "_collection_link": "https://go.postman.co/collection/57199166-ceb68605-482c-4802-987a-c4aaacef1e31?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "Registrar usuario",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Juan\",\n  \"email\": \"juan@mail.com\",\n  \"password\": \"123456\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/auth/register",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "auth",
+                "register"
+              ]
+            },
+            "description": "201 si crea el usuario, 400 si faltan datos o el email ya existe. La respuesta trae el 'id' del usuario: copialo en la variable 'userId' o 'adminUserId' según corresponda (el role por default lo define tu modelo/seed, no se manda en el register)."
+          },
+          "response": []
+        },
+        {
+          "name": "Login",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"juan@mail.com\",\n  \"password\": \"123456\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/auth/login",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "auth",
+                "login"
+              ]
+            },
+            "description": "200 con { user: { id, name, role } }, 401 si las credenciales son inválidas."
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Products",
+      "item": [
+        {
+          "name": "Listar productos",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/products?category=",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "products"
+              ],
+              "query": [
+                {
+                  "key": "category",
+                  "value": "",
+                  "description": "Opcional"
+                }
+              ]
+            },
+            "description": "200 con { items: [...] }. No requiere autenticación."
+          },
+          "response": []
+        },
+        {
+          "name": "Detalle de producto",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/products/{{productId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "products",
+                "{{productId}}"
+              ]
+            },
+            "description": "200 con { item: {...} }, 404 si no existe. No requiere autenticación."
+          },
+          "response": []
+        },
+        {
+          "name": "Crear producto (admin)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "x-user-id",
+                "value": "{{adminUserId}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Producto\",\n  \"price\": 100,\n  \"category\": \"Categoria\",\n  \"description\": \"Descripción\",\n  \"image\": \"https://.../img.jpg\",\n  \"attributes\": { \"color\": \"rojo\", \"talle\": \"M\", \"stock\": 10 }\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/products",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "products"
+              ]
+            },
+            "description": "201 si crea, 400 si falla validación (name/price/category obligatorios), 401 si falta el header x-user-id o el usuario no existe, 403 si el usuario no es admin."
+          },
+          "response": []
+        },
+        {
+          "name": "Editar producto (admin)",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "x-user-id",
+                "value": "{{adminUserId}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Producto editado\",\n  \"price\": 150,\n  \"category\": \"Categoria\",\n  \"description\": \"Descripción actualizada\",\n  \"image\": \"https://.../img.jpg\",\n  \"attributes\": { \"color\": \"azul\", \"talle\": \"L\", \"stock\": 5 }\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/products/{{productId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "products",
+                "{{productId}}"
+              ]
+            },
+            "description": "200, 400 (validación), 401 (falta/inválido x-user-id), 403 (no admin), 404 (no existe)."
+          },
+          "response": []
+        },
+        {
+          "name": "Borrar producto (admin)",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "x-user-id",
+                "value": "{{adminUserId}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/products/{{productId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "products",
+                "{{productId}}"
+              ]
+            },
+            "description": "200 si borró, 401 (falta/inválido x-user-id), 403 (no admin), 404 si no existe."
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Cart",
+      "item": [
+        {
+          "name": "Obtener carrito",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "x-user-id",
+                "value": "{{userId}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/cart",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "cart"
+              ]
+            },
+            "description": "200 con { items: [...], total }. 401 si falta o es inválido el header x-user-id (crea el carrito automáticamente si no existía)."
+          },
+          "response": []
+        },
+        {
+          "name": "Agregar ítem",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "x-user-id",
+                "value": "{{userId}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"productId\": \"{{productId}}\",\n  \"quantity\": 1\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/cart/items",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "cart",
+                "items"
+              ]
+            },
+            "description": "200 con el carrito actualizado. 400 si falta productId/quantity inválida o el producto no existe. 401 si falta/inválido x-user-id."
+          },
+          "response": []
+        },
+        {
+          "name": "Eliminar ítem",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "x-user-id",
+                "value": "{{userId}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/cart/items/{{productId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "cart",
+                "items",
+                "{{productId}}"
+              ]
+            },
+            "description": "200 con el carrito actualizado. 400 si falta x-user-id. 404 si no hay carrito o el ítem no está en él."
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:4000/api",
+      "description": "Puerto default del server.js es 4000 (o el que definas en PORT del .env)"
+    },
+    {
+      "key": "userId",
+      "value": "",
+      "description": "Id de un usuario con role 'user' (lo sacás de la respuesta de Registrar usuario o Login)"
+    },
+    {
+      "key": "adminUserId",
+      "value": "",
+      "description": "Id de un usuario con role 'admin' (necesario para las rutas de Products protegidas)"
+    },
+    {
+      "key": "productId",
+      "value": "",
+      "description": "Id de un producto (lo sacás de la respuesta de Listar/Crear producto)"
+    }
+  ]
+}
