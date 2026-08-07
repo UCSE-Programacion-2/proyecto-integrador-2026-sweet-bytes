@@ -1,33 +1,31 @@
 const User = require('../models/User');
+const asyncHandler = require('./asyncHandler');
+const AppError = require('./AppError');
 
-async function requireAdmin(req, res, next) {
-  try {
-    const userId = req.header('x-user-id');
+const requireAdmin = asyncHandler(async (req, res, next) => {
+  const userId = req.header('x-user-id');
 
-    if (!userId) {
-      res.status(401).json({
-        error: { code: 'UNAUTHORIZED', message: 'Falta identificar al usuario (header x-user-id)' },
-      });
-      return;
-    }
-
-    const user = await User.findById(userId);
-
-    if (!user) {
-      res.status(401).json({ error: { code: 'UNAUTHORIZED', message: 'Usuario inválido' } });
-      return;
-    }
-
-    if (user.role !== 'admin') {
-      res.status(403).json({ error: { code: 'FORBIDDEN', message: 'Requiere rol admin' } });
-      return;
-    }
-
-    req.user = user;
-    next();
-  } catch (err) {
-    res.status(401).json({ error: { code: 'UNAUTHORIZED', message: 'Usuario inválido' } });
+  if (!userId) {
+    throw new AppError(401, 'UNAUTHORIZED', 'Falta identificar al usuario (header x-user-id)');
   }
-}
+
+  let user;
+  try {
+    user = await User.findById(userId);
+  } catch (err) {
+    throw new AppError(401, 'UNAUTHORIZED', 'Usuario inválido');
+  }
+
+  if (!user) {
+    throw new AppError(401, 'UNAUTHORIZED', 'Usuario inválido');
+  }
+
+  if (user.role !== 'admin') {
+    throw new AppError(403, 'FORBIDDEN', 'Requiere rol admin');
+  }
+
+  req.user = user;
+  next();
+});
 
 module.exports = requireAdmin;

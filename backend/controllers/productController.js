@@ -1,92 +1,86 @@
 const Product = require('../models/Product');
+const asyncHandler = require('../middlewares/asyncHandler');
+const AppError = require('../middlewares/AppError');
 
-async function getProducts(req, res) {
+const getProducts = asyncHandler(async (req, res) => {
+  const { category } = req.query;
+  const filter = category ? { category } : {};
+
+  const items = await Product.find(filter);
+
+  res.status(200).json({ items });
+});
+
+const getProductById = asyncHandler(async (req, res) => {
+  let item;
   try {
-    const { category } = req.query;
-    const filter = category ? { category } : {};
-
-    const items = await Product.find(filter);
-
-    res.status(200).json({ items });
+    item = await Product.findById(req.params.id);
   } catch (err) {
-    res.status(500).json({ error: { code: 'INTERNAL_ERROR', message: 'Error al obtener los productos' } });
+    throw new AppError(404, 'NOT_FOUND', 'Producto no encontrado');
   }
-}
 
-async function getProductById(req, res) {
-  try {
-    const item = await Product.findById(req.params.id);
-
-    if (!item) {
-      res.status(404).json({ error: { code: 'NOT_FOUND', message: 'Producto no encontrado' } });
-      return;
-    }
-
-    res.status(200).json({ item });
-  } catch (err) {
-    res.status(404).json({ error: { code: 'NOT_FOUND', message: 'Producto no encontrado' } });
+  if (!item) {
+    throw new AppError(404, 'NOT_FOUND', 'Producto no encontrado');
   }
-}
 
-async function createProduct(req, res) {
+  res.status(200).json({ item });
+});
+
+const createProduct = asyncHandler(async (req, res) => {
+  const { name, price, category } = req.body;
+
+  if (!name || price === undefined || !category) {
+    throw new AppError(400, 'BAD_REQUEST', 'name, price y category son obligatorios');
+  }
+
+  let item;
   try {
-    const { name, price, category } = req.body;
-
-    if (!name || price === undefined || !category) {
-      res.status(400).json({
-        error: { code: 'BAD_REQUEST', message: 'name, price y category son obligatorios' },
-      });
-      return;
-    }
-
-    const item = await Product.create(req.body);
-
-    res.status(201).json({ item });
+    item = await Product.create(req.body);
   } catch (err) {
     if (err.name === 'ValidationError') {
-      res.status(400).json({ error: { code: 'BAD_REQUEST', message: err.message } });
-      return;
+      throw new AppError(400, 'BAD_REQUEST', err.message);
     }
-    res.status(500).json({ error: { code: 'INTERNAL_ERROR', message: 'Error al crear el producto' } });
+    throw err;
   }
-}
 
-async function updateProduct(req, res) {
+  res.status(201).json({ item });
+});
+
+const updateProduct = asyncHandler(async (req, res) => {
+  let item;
   try {
-    const item = await Product.findByIdAndUpdate(req.params.id, req.body, {
+    item = await Product.findByIdAndUpdate(req.params.id, req.body, {
       new: true,
       runValidators: true,
     });
-
-    if (!item) {
-      res.status(404).json({ error: { code: 'NOT_FOUND', message: 'Producto no encontrado' } });
-      return;
-    }
-
-    res.status(200).json({ item });
   } catch (err) {
     if (err.name === 'ValidationError') {
-      res.status(400).json({ error: { code: 'BAD_REQUEST', message: err.message } });
-      return;
+      throw new AppError(400, 'BAD_REQUEST', err.message);
     }
-    res.status(404).json({ error: { code: 'NOT_FOUND', message: 'Producto no encontrado' } });
+    throw new AppError(404, 'NOT_FOUND', 'Producto no encontrado');
   }
-}
 
-async function deleteProduct(req, res) {
+  if (!item) {
+    throw new AppError(404, 'NOT_FOUND', 'Producto no encontrado');
+  }
+
+  res.status(200).json({ item });
+});
+
+const deleteProduct = asyncHandler(async (req, res) => {
+  let item;
   try {
-    const item = await Product.findByIdAndDelete(req.params.id);
-
-    if (!item) {
-      res.status(404).json({ error: { code: 'NOT_FOUND', message: 'Producto no encontrado' } });
-      return;
-    }
-
-    res.status(200).json({ item });
+    item = await Product.findByIdAndDelete(req.params.id);
   } catch (err) {
-    res.status(404).json({ error: { code: 'NOT_FOUND', message: 'Producto no encontrado' } });
+    throw new AppError(404, 'NOT_FOUND', 'Producto no encontrado');
   }
-}
+
+  if (!item) {
+    throw new AppError(404, 'NOT_FOUND', 'Producto no encontrado');
+  }
+
+  res.status(200).json({ item });
+});
 
 module.exports = {
   getProducts,
