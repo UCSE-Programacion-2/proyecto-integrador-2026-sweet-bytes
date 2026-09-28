@@ -83,11 +83,11 @@
                 <div class="mb-6">
                     <h4 class="text-xs font-bold text-brown-md/60 uppercase tracking-wide mb-3">Categorías</h4>
                     <ul class="space-y-2.5 text-sm text-brown-md/80">
-                        <li><button class="font-semibold text-caramel w-full text-left">Todos los productos</button></li>
-                        <li><button class="hover:text-caramel transition-colors w-full text-left">Budines</button></li>
-                        <li><button class="hover:text-caramel transition-colors w-full text-left">Tortas</button></li>
-                        <li><button class="hover:text-caramel transition-colors w-full text-left">Individuales</button></li>
-                        <li><button class="hover:text-caramel transition-colors w-full text-left">Pastelería Fina</button></li>
+                        <li><button data-category-filter="" class="font-semibold text-caramel w-full text-left">Todos los productos</button></li>
+                        <li><button data-category-filter="Budines" class="hover:text-caramel transition-colors w-full text-left">Budines</button></li>
+                        <li><button data-category-filter="Tortas" class="hover:text-caramel transition-colors w-full text-left">Tortas</button></li>
+                        <li><button data-category-filter="Individuales" class="hover:text-caramel transition-colors w-full text-left">Individuales</button></li>
+                        <li><button data-category-filter="Pastelería Fina" class="hover:text-caramel transition-colors w-full text-left">Pastelería Fina</button></li>
                     </ul>
                 </div>
 
@@ -103,111 +103,11 @@
             </div>
         </aside>
 
-        <div class="lg:w-3/4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-7">
-            
-            <article class="card bg-white rounded-[1.6rem] overflow-hidden border border-cream-dk shadow-sm">
-                <div class="img-wrap h-56">
-                    <img src="assets/img/Producto01.jpeg" alt="Budín de Vainilla" class="w-full h-full object-cover">
-                </div>
-                <div class="p-6">
-                    <div class="flex items-center justify-between mb-2">
-                        <h3 class="font-display text-[1.15rem] font-bold text-brown">Budín de Vainilla</h3>
-                        <span class="tag bg-amber-50 text-amber-700">🍰 Clásico</span>
-                    </div>
-                    <p class="text-brown-md/55 text-[.82rem] leading-relaxed mb-5">Esponjoso, húmedo y con aroma natural a vainilla.</p>
-                    <div class="pt-4 border-t border-cream-dk flex items-center justify-between">
-                        <span class="text-lg font-bold text-brown-md">$2.500</span>
-                        <a href="detalle.html" class="bg-brown/5 hover:bg-caramel hover:text-white text-caramel text-[.8rem] font-semibold px-4 py-2 rounded-full transition-all">Ver Detalle</a>
-                    </div>
-                </div>
-            </article>
-
-            <article class="card bg-white rounded-[1.6rem] overflow-hidden border border-cream-dk shadow-sm">
-                <div class="img-wrap h-56">
-                    <img src="assets/img/Producto06.jpeg" alt="Torta de frutos rojos" class="w-full h-full object-cover">
-                </div>
-                <div class="p-6">
-                    <div class="flex items-center justify-between mb-2">
-                        <h3 class="font-display text-[1.1rem] font-bold text-brown leading-tight">Torta de frutos rojos</h3>
-                        <span class="tag bg-amber-50 text-amber-800 shrink-0 ml-2">🍮 Premium</span>
-                    </div>
-                    <p class="text-brown-md/55 text-[.82rem] leading-relaxed mb-5">Torta clásica decorada con abundantes frutos rojos.</p>
-                    <div class="pt-4 border-t border-cream-dk flex items-center justify-between">
-                        <span class="text-lg font-bold text-brown-md">$50.000</span>
-                        <a href="detalle.html" class="bg-brown/5 hover:bg-caramel hover:text-white text-caramel text-[.8rem] font-semibold px-4 py-2 rounded-full transition-all">Ver Detalle</a>
-                    </div>
-                </div>
-            </article>
-
-            <article class="card bg-white rounded-[1.6rem] overflow-hidden border border-cream-dk shadow-sm">
-                <div class="img-wrap h-56">
-                    <img src="assets/img/Producto07.jpeg" alt="Lemon Pie" class="w-full h-full object-cover">
-                </div>
-                <div class="p-6">
-                    <div class="flex items-center justify-between mb-2">
-                        <h3 class="font-display text-[1.15rem] font-bold text-brown">Lemon Pie</h3>
-                        <span class="tag bg-stone-50 text-stone-600">🍋 Favorito</span>
-                    </div>
-                    <p class="text-brown-md/55 text-[.82rem] leading-relaxed mb-5">Esponjoso lemon pie. Perfecto para la hora del té.</p>
-                    <div class="pt-4 border-t border-cream-dk flex items-center justify-between">
-                        <span class="text-lg font-bold text-brown-md">$40.000</span>
-                        <a href="detalle.html" class="bg-brown/5 hover:bg-caramel hover:text-white text-caramel text-[.8rem] font-semibold px-4 py-2 rounded-full transition-all">Ver Detalle</a>
-                    </div>
-                </div>
-            </article>
-
-            <article class="card bg-white rounded-[1.6rem] overflow-hidden border border-cream-dk shadow-sm">
-                <div class="img-wrap h-56">
-                    <img src="assets/img/Producto03.jpeg" alt="Budín de Carrot Cake" class="w-full h-full object-cover">
-                </div>
-                <div class="p-6">
-                    <div class="flex items-center justify-between mb-2">
-                        <h3 class="font-display text-[1.15rem] font-bold text-brown">Budín de Carrot Cake</h3>
-                        <span class="tag bg-orange-50 text-orange-500">🥕 Estrella</span>
-                    </div>
-                    <p class="text-brown-md/55 text-[.82rem] leading-relaxed mb-5">Zanahoria, canela y nueces, coronado con frosting de queso crema.</p>
-                    <div class="pt-4 border-t border-cream-dk flex items-center justify-between">
-                        <span class="text-lg font-bold text-brown-md">$2.500</span>
-                        <a href="detalle.html" class="bg-brown/5 hover:bg-caramel hover:text-white text-caramel text-[.8rem] font-semibold px-4 py-2 rounded-full transition-all">Ver Detalle</a>
-                    </div>
-                </div>
-            </article>
-
-            <article class="card bg-white rounded-[1.6rem] overflow-hidden border border-cream-dk shadow-sm">
-                <div class="img-wrap h-56">
-                    <img src="assets/img/Producto02.jpeg" alt="Budín de Limón" class="w-full h-full object-cover">
-                </div>
-                <div class="p-6">
-                    <div class="flex items-center justify-between mb-2">
-                        <h3 class="font-display text-[1.15rem] font-bold text-brown">Budín de Limón</h3>
-                        <span class="tag bg-yellow-50 text-yellow-600">🍋 Fresco</span>
-                    </div>
-                    <p class="text-brown-md/55 text-[.82rem] leading-relaxed mb-5">Glaseado de limón con ralladura fresca. Aromático y equilibrado.</p>
-                    <div class="pt-4 border-t border-cream-dk flex items-center justify-between">
-                        <span class="text-lg font-bold text-brown-md">$2.500</span>
-                        <a href="detalle.html" class="bg-brown/5 hover:bg-caramel hover:text-white text-caramel text-[.8rem] font-semibold px-4 py-2 rounded-full transition-all">Ver Detalle</a>
-                    </div>
-                </div>
-            </article>
-
-            <article class="card bg-white rounded-[1.6rem] overflow-hidden border border-cream-dk shadow-sm">
-                <div class="img-wrap h-56">
-                    <img src="assets/img/Producto04.jpeg" alt="Cinnamon Rolls Clásicos" class="w-full h-full object-cover">
-                </div>
-                <div class="p-6">
-                    <div class="flex items-center justify-between mb-2">
-                        <h3 class="font-display text-[1.15rem] font-bold text-brown">Cinnamon Rolls</h3>
-                        <span class="tag bg-amber-50 text-amber-800">🌀 Imperdible</span>
-                    </div>
-                    <p class="text-brown-md/55 text-[.82rem] leading-relaxed mb-5">Esponjosos, rellenos de mucha canela y bañados en glaseado de crema.</p>
-                    <div class="pt-4 border-t border-cream-dk flex items-center justify-between">
-                        <span class="text-lg font-bold text-brown-md">$2.500</span>
-                        <a href="detalle.html" class="bg-brown/5 hover:bg-caramel hover:text-white text-caramel text-[.8rem] font-semibold px-4 py-2 rounded-full transition-all">Ver Detalle</a>
-                    </div>
-                </div>
-            </article>
-
-        </div>
+        <div
+            id="products-grid"
+            data-products-grid
+            class="lg:w-3/4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-7"
+        ></div>
     </div>
 </main>
 
@@ -223,5 +123,7 @@
     </div>
 </section>
 
+<script src="assets/js/api.js"></script>
+<script src="assets/js/products.js"></script>
 </body>
 </html>
