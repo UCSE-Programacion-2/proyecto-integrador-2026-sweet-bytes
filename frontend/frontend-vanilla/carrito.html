@@ -52,25 +52,17 @@
     <h1 class="font-display text-4xl font-bold text-brown mb-8" style="font-family:'Playfair Display'">Tu pedido</h1>
 
     <div class="grid lg:grid-cols-3 gap-8 items-start">
-        <div class="lg:col-span-2 bg-white rounded-2xl border border-cream-dk p-6 shadow-sm space-y-4">
-            <div class="flex items-center gap-4 pb-4 border-b border-cream-dk">
-                <img src="assets/img/Producto04.jpeg" class="w-16 h-16 rounded-xl object-cover">
-                <div class="flex-1">
-                    <h3 class="font-semibold text-[.95rem]">Cinnamon Rolls Clásicos</h3>
-                    <p class="text-xs text-brown-md/50">Cantidad: 6</p>
-                </div>
-                <p class="font-bold text-[.95rem] text-right">$7.200</p>
-            </div>
+        <div class="lg:col-span-2 bg-white rounded-2xl border border-cream-dk p-6 shadow-sm space-y-4" data-cart-items>
         </div>
 
         <div class="bg-white rounded-2xl border border-cream-dk p-6 shadow-sm">
             <h2 class="font-semibold text-lg mb-4">Resumen</h2>
             <div class="space-y-3 text-sm border-b border-cream-dk pb-4 mb-4">
-                <div class="flex justify-between text-brown-md/60"><span>Subtotal</span><span>$7.200</span></div>
+                <div class="flex justify-between text-brown-md/60"><span>Subtotal</span><span data-cart-subtotal>$0</span></div>
                 <div class="flex justify-between text-brown-md/60"><span>Envío (Jujuy)</span><span class="text-caramel font-medium">Gratis</span></div>
             </div>
-            <div class="flex justify-between font-bold text-lg mb-6"><span>Total</span><span>$7.200</span></div>
-            <a href="checkout.html" class="block text-center w-full bg-brown text-cream font-semibold py-3.5 rounded-full hover:bg-caramel transition-colors">
+            <div class="flex justify-between font-bold text-lg mb-6"><span>Total</span><span data-cart-total>$0</span></div>
+            <a href="checkout.html" data-cart-checkout class="block text-center w-full bg-brown text-cream font-semibold py-3.5 rounded-full hover:bg-caramel transition-colors">
                 Iniciar Compra
             </a>
         </div>
@@ -80,5 +72,6 @@
 <script src="assets/js/api.js"></script>
 <script src="assets/js/auth.js"></script>
 <script src="assets/js/navbar.js"></script>
+<script src="assets/js/cart.js"></script>
 </body>
 </html>
