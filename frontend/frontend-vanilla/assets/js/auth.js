@@ -32,6 +32,49 @@
     errorBox.classList.remove('hidden');
   }
 
+  function showFormSuccess(form, message) {
+    const successBox = form.querySelector('[data-form-success]');
+    if (!successBox) return;
+    successBox.textContent = message;
+    successBox.classList.remove('hidden');
+  }
+
+  function wireRegisterForm() {
+    const form = document.querySelector('[data-register-form]');
+    if (!form) return;
+
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+
+      const name = form.querySelector('[name="name"]').value.trim();
+      const email = form.querySelector('[name="email"]').value.trim();
+      const password = form.querySelector('[name="password"]').value;
+      const confirmPassword = form.querySelector('[name="confirmPassword"]').value;
+      const submitButton = form.querySelector('button[type="submit"]');
+
+      form.querySelector('[data-form-error]')?.classList.add('hidden');
+      form.querySelector('[data-form-success]')?.classList.add('hidden');
+
+      if (password !== confirmPassword) {
+        showFormError(form, 'Las contraseñas no coinciden');
+        return;
+      }
+
+      submitButton.disabled = true;
+
+      try {
+        await api.register({ name, email, password });
+        showFormSuccess(form, 'Usuario creado con éxito. Redirigiendo al login...');
+        setTimeout(() => {
+          window.location.href = 'login.html';
+        }, 1500);
+      } catch (err) {
+        showFormError(form, err.message);
+        submitButton.disabled = false;
+      }
+    });
+  }
+
   function wireLoginForm() {
     const form = document.querySelector('[data-login-form]');
     if (!form) return;
@@ -59,6 +102,7 @@
 
   document.addEventListener('DOMContentLoaded', () => {
     wireLoginForm();
+    wireRegisterForm();
   });
 
   window.SweetBytes.auth = {
