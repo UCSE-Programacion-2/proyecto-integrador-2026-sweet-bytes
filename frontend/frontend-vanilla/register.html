@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear cuenta — Freddy Bakes</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        cream:       '#FDF6EE',
+                        'cream-dk':  '#F2E4D0',
+                        caramel:     '#C97D4E',
+                        'car-light': '#E8C4A0',
+                        brown:       '#3D1F0A',
+                        'brown-md':  '#6B3A20',
+                        blush:       '#F4D5C8',
+                    },
+                    fontFamily: {
+                        display: ['"Playfair Display"', 'serif'],
+                        body:    ['"Inter"', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        body { background-color: #FDF6EE; font-family: 'Inter', sans-serif; }
+        .nav-blur { backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); }
+    </style>
+</head>
+<body class="text-brown">
+
+<header class="nav-blur bg-cream/80 sticky top-0 z-50 border-b border-car-light/30">
+    <nav class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+        <a href="index.html" class="flex items-center gap-3">
+            <img src="assets/img/logo.png" alt="Freddy Bakes" class="h-11 w-11 rounded-full object-cover">
+            <span class="font-display font-bold text-lg text-brown-md hidden sm:block">Freddy Bakes</span>
+        </a>
+        <a href="catalogo.html" class="text-[.82rem] font-medium text-brown-md hover:text-caramel">Volver al catálogo</a>
+    </nav>
+</header>
+
+<main class="max-w-md mx-auto px-6 py-20">
+    <div class="bg-white rounded-2xl border border-cream-dk p-8 shadow-sm">
+        <h1 class="font-display text-3xl font-bold text-brown mb-2">Creá tu cuenta</h1>
+        <p class="text-brown-md/55 text-sm mb-8">Registrate para hacer tus pedidos más rápido.</p>
+
+        <p data-form-error class="hidden bg-red-50 text-red-600 text-sm rounded-lg px-4 py-3 mb-6"></p>
+        <p data-form-success class="hidden bg-green-50 text-green-700 text-sm rounded-lg px-4 py-3 mb-6"></p>
+
+        <form data-register-form class="space-y-5">
+            <div>
+                <label class="block text-xs font-bold text-brown-md uppercase tracking-wide mb-2">Nombre</label>
+                <input type="text" name="name" required placeholder="Tu nombre" class="w-full border border-cream-dk rounded-lg px-4 py-2.5 text-sm bg-cream focus:outline-none focus:border-caramel focus:ring-1 focus:ring-caramel">
+            </div>
+            <div>
+                <label class="block text-xs font-bold text-brown-md uppercase tracking-wide mb-2">Email</label>
+                <input type="email" name="email" required placeholder="tu@email.com" class="w-full border border-cream-dk rounded-lg px-4 py-2.5 text-sm bg-cream focus:outline-none focus:border-caramel focus:ring-1 focus:ring-caramel">
+            </div>
+            <div>
+                <label class="block text-xs font-bold text-brown-md uppercase tracking-wide mb-2">Contraseña</label>
+                <input type="password" name="password" required minlength="6" placeholder="Mínimo 6 caracteres" class="w-full border border-cream-dk rounded-lg px-4 py-2.5 text-sm bg-cream focus:outline-none focus:border-caramel focus:ring-1 focus:ring-caramel">
+            </div>
+            <div>
+                <label class="block text-xs font-bold text-brown-md uppercase tracking-wide mb-2">Repetir contraseña</label>
+                <input type="password" name="confirmPassword" required minlength="6" placeholder="Repetí tu contraseña" class="w-full border border-cream-dk rounded-lg px-4 py-2.5 text-sm bg-cream focus:outline-none focus:border-caramel focus:ring-1 focus:ring-caramel">
+            </div>
+            <button type="submit" class="w-full bg-brown text-cream font-semibold py-3 rounded-full hover:bg-caramel transition-colors">
+                Crear cuenta
+            </button>
+        </form>
+
+        <p class="text-center text-sm text-brown-md/60 mt-6">
+            ¿Ya tenés cuenta? <a href="login.html" class="text-caramel font-semibold hover:text-brown">Ingresá acá</a>
+        </p>
+    </div>
+</main>
+
+<script src="assets/js/api.js"></script>
+<script src="assets/js/auth.js"></script>
+</body>
+</html>
