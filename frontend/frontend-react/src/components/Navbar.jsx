@@ -1,8 +1,14 @@
 import { Link, NavLink } from 'react-router-dom';
-import { useAuth } from '../context/AuthContext';
+import { useCart } from '../context/CartContext';
+
+const formatPrice = new Intl.NumberFormat('es-AR', {
+  style: 'currency',
+  currency: 'ARS',
+  maximumFractionDigits: 0,
+});
 
 export default function Navbar() {
-  const { user, isAuthenticated, logout } = useAuth();
+  const { items, removeItem, totalItems, totalPrice } = useCart();
 
   return (
     <header className="site-header">
@@ -21,16 +27,41 @@ export default function Navbar() {
         </nav>
 
         <div className="site-actions">
-          {isAuthenticated ? (
-            <>
-              <span className="site-actions__greeting">Hola, {user.name}</span>
-              <button type="button" onClick={logout}>
-                Salir
-              </button>
-            </>
-          ) : (
-            <NavLink to="/login">Ingresar</NavLink>
-          )}
+          <NavLink to="/login">Ingresar</NavLink>
+
+          <details className="cart-menu">
+            <summary>
+              Mi Carrito
+              {totalItems > 0 && (
+                <span className="cart-menu__count" data-testid="cart-count">
+                  {totalItems}
+                </span>
+              )}
+            </summary>
+            <div className="cart-menu__panel">
+              {items.length === 0 ? (
+                <p>Tu carrito está vacío.</p>
+              ) : (
+                <>
+                  <ul>
+                    {items.map((item) => (
+                      <li key={item.id}>
+                        <span>
+                          {item.name} × {item.quantity}
+                        </span>
+                        <button type="button" onClick={() => removeItem(item.id)}>
+                          Quitar
+                        </button>
+                      </li>
+                    ))}
+                  </ul>
+                  <p>
+                    <strong>Total: {formatPrice.format(totalPrice)}</strong>
+                  </p>
+                </>
+              )}
+            </div>
+          </details>
         </div>
       </div>
     </header>

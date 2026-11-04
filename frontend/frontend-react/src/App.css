@@ -470,29 +470,58 @@ body {
   background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045);
 }
 
-.auth-form {
-  display: grid;
-  gap: 8px;
-  width: min(100%, 360px);
-  margin: 24px auto;
-  text-align: left;
-}
-
-.auth-form input {
-  padding: 8px 10px;
-  border: 1px solid #e8c4a0;
-  border-radius: 8px;
-  font: inherit;
-}
-
-.auth-form button {
-  padding: 8px 14px;
+.product-card__add {
+  padding: 0.5rem 0.9rem;
   border: 0;
   border-radius: 999px;
   background: #3d1f0a;
   color: #fdf6ee;
-  font: inherit;
+  font-size: 0.8rem;
   cursor: pointer;
+}
+
+.product-card__add:hover {
+  background: #c97d4e;
+}
+
+.cart-menu {
+  position: relative;
+}
+
+.cart-menu summary {
+  position: relative;
+  padding: 0.65rem 1.25rem;
+  border-radius: 999px;
+  background: #3d1f0a;
+  color: #fdf6ee;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  list-style: none;
+}
+
+.cart-menu summary::-webkit-details-marker {
+  display: none;
+https://massgrave.dev/office_c2r_links}
+
+.cart-menu summary:hover {
+  background: #c97d4e;
+}
+
+.cart-menu__count {
+  position: absolute;
+  top: -0.5rem;
+  right: -0.5rem;
+  display: flex;
+  width: 1.25rem;
+  height: 1.25rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #c97d4e;
+  color: #fdf6ee;
+  font-size: 0.65rem;
+  font-weight: 700;
 }
 
 .site-actions {
@@ -501,33 +530,29 @@ body {
   gap: 1.25rem;
 }
 
-.site-actions__greeting {
-  color: #6b3a20b3;
-  font-size: 0.82rem;
-  font-weight: 500;
+.cart-menu__panel {
+  position: absolute;
+  right: 0;
+  z-index: 10;
+  min-width: 260px;
+  margin-top: 8px;
+  padding: 12px 16px;
+  border: 1px solid #e8c4a0;
+  border-radius: 12px;
+  background: #fff;
+  text-align: left;
 }
 
-.site-actions button {
-  padding: 0;
-  border: 0;
-  background: none;
-  color: #6b3a20;
-  font: inherit;
-  font-size: 0.82rem;
-  font-weight: 500;
-  cursor: pointer;
-}
-
-.site-actions button:hover {
-  color: #c97d4e;
-}
-
-.auth-form button:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
-}
-
-.auth-form [role='alert'] {
+.cart-menu__panel ul {
   margin: 0;
-  color: #a12a1a;
+  padding: 0;
+  list-style: none;
+}
+
+.cart-menu__panel li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 4px 0;
 }
