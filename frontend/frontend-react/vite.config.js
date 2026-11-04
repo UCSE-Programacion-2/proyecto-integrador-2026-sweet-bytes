@@ -12,7 +12,7 @@ export default defineConfig({
     port: 5173,
     
     // Abre automáticamente el navegador al iniciar
-    open: true,
+    open: false
   },
   
   // Configuración de build para producción
