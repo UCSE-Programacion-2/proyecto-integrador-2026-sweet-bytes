@@ -163,10 +163,10 @@ export default function Home() {
           personalizados para eventos también disponibles.
         </p>
         <div className="home-actions home-social">
-          <a href="https://wa.me/54XXXXXXXXXX" className="home-social__whatsapp">
+          <a href="https://wa.me/5493884087882" className="home-social__whatsapp">
             WhatsApp
           </a>
-          <a href="https://instagram.com/" className="home-social__instagram">
+          <a href="https://www.instagram.com/freddy.rolls/" className="home-social__instagram">
             Instagram
           </a>
         </div>
