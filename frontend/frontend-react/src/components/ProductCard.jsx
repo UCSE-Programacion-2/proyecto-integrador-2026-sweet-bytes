@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { useCart } from '../context/CartContext';
 
 const formatPrice = new Intl.NumberFormat('es-AR', {
   style: 'currency',
@@ -7,6 +8,7 @@ const formatPrice = new Intl.NumberFormat('es-AR', {
 });
 
 export default function ProductCard({ product }) {
+  const { addItem } = useCart();
   const image = product.image || 'logo.png';
 
   return (
@@ -29,6 +31,9 @@ export default function ProductCard({ product }) {
         <div className="product-card__actions">
           <strong>{formatPrice.format(product.price)}</strong>
           <Link to={`/productos/${product._id}`}>Ver detalle</Link>
+          <button type="button" className="product-card__add" onClick={() => addItem(product)}>
+            Agregar al carrito
+          </button>
         </div>
       </div>
     </article>
