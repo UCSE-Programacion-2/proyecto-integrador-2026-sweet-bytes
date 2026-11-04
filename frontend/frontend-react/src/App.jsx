@@ -1,17 +1,10 @@
 import { Link, Route, Routes, useParams } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import Home from './components/Home';
 import './App.css';
 
-function Home() {
-  return (
-    <>
-      <h1>Freddy Bakes</h1>
-      <p>Pastelería y repostería artesanal</p>
-      <Link to="/productos/1">Ver detalle de ejemplo</Link>
-    </>
-  );
-}
+
 
 function Login() {
   return (
