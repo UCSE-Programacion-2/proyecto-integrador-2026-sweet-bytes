@@ -3,6 +3,33 @@ import ProductCard from './ProductCard';
 
 const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:4000';
 
+const MARQUEE_ITEMS = [
+  'Budín de Vainilla',
+  'Cinnamon Rolls',
+  'Budín Marmolado',
+  'Carrot Cake',
+  'Budín de Banana',
+  'Dulce de Leche',
+  'Budín de Limón',
+  'Budín de Manzana',
+];
+
+function Marquee() {
+  return (
+    <div className="home-marquee" aria-hidden="true">
+      <div className="home-marquee__track">
+        {[0, 1].map((copy) => (
+          <span key={copy}>
+            {MARQUEE_ITEMS.map((name) => (
+              <span key={name}>✦ {name}</span>
+            ))}
+          </span>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 export default function Home() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -58,6 +85,8 @@ export default function Home() {
         </div>
       </section>
 
+      <Marquee />
+
       <section id="productos" className="home-section">
         <h2>Lo que hacemos</h2>
         <p>Preparados por encargo, con ingredientes frescos y recetas con alma.</p>
@@ -75,6 +104,10 @@ export default function Home() {
             ))}
           </div>
         )}
+
+        <p className="home-more">
+          <a href="#productos">Ver catálogo completo →</a>
+        </p>
       </section>
 
       <section id="nosotros" className="home-section home-about">
@@ -88,10 +121,24 @@ export default function Home() {
               para que cada bocado sea una experiencia especial.
             </p>
             <p>
-              Trabajamos con ingredientes frescos y de calidad. Preparamos todo
-              por encargo para que llegue a tus manos recién salido del horno.
+              Trabajamos con ingredientes frescos y de calidad, preparando todo
+              por encargo para garantizar que llegue a tus manos recién salido
+              del horno, en su punto justo.
             </p>
-            <p className="home-label">100% artesanal · 6+ productos únicos · Con amor</p>
+            <dl className="home-stats">
+              <div>
+                <dt>100%</dt>
+                <dd>Artesanal</dd>
+              </div>
+              <div>
+                <dt>6+</dt>
+                <dd>Productos únicos</dd>
+              </div>
+              <div>
+                <dt>♥</dt>
+                <dd>Con amor</dd>
+              </div>
+            </dl>
           </div>
           <div className="home-about__photos">
             {['06', '04', '07', '03'].map((number) => (
@@ -107,9 +154,22 @@ export default function Home() {
       </section>
 
       <section id="contacto" className="home-section home-contact">
-        <p className="home-label">Freddy Bakes</p>
-        <h2>Contactanos</h2>
-        <p>Pastelería y repostería artesanal por encargo en San Salvador de Jujuy.</p>
+        <p className="home-label">Hacé tu pedido</p>
+        <h2>
+          ¿Se te antojó <em>algo rico?</em>
+        </h2>
+        <p className="home-intro">
+          Escribinos con anticipación y preparamos lo que quieras. Pedidos
+          personalizados para eventos también disponibles.
+        </p>
+        <div className="home-actions home-social">
+          <a href="https://wa.me/5493884087882" className="home-social__whatsapp">
+            WhatsApp
+          </a>
+          <a href="https://www.instagram.com/freddy.rolls/" className="home-social__instagram">
+            Instagram
+          </a>
+        </div>
       </section>
     </div>
   );
