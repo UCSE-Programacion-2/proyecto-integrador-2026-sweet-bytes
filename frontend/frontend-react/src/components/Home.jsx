@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import ProductCard from './ProductCard';
-
-const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:4000';
+import { API_URL } from '../services/api';
 
 const MARQUEE_ITEMS = [
   'Budín de Vainilla',
@@ -40,7 +39,7 @@ export default function Home() {
 
     async function loadProducts() {
       try {
-        const response = await fetch(`${apiUrl}/api/products`, {
+        const response = await fetch(`${API_URL}/api/products`, {
           signal: controller.signal,
         });
 
