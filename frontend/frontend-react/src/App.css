@@ -469,3 +469,65 @@ body {
 .home-social .home-social__instagram {
   background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045);
 }
+
+.auth-form {
+  display: grid;
+  gap: 8px;
+  width: min(100%, 360px);
+  margin: 24px auto;
+  text-align: left;
+}
+
+.auth-form input {
+  padding: 8px 10px;
+  border: 1px solid #e8c4a0;
+  border-radius: 8px;
+  font: inherit;
+}
+
+.auth-form button {
+  padding: 8px 14px;
+  border: 0;
+  border-radius: 999px;
+  background: #3d1f0a;
+  color: #fdf6ee;
+  font: inherit;
+  cursor: pointer;
+}
+
+.site-actions {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.site-actions__greeting {
+  color: #6b3a20b3;
+  font-size: 0.82rem;
+  font-weight: 500;
+}
+
+.site-actions button {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: #6b3a20;
+  font: inherit;
+  font-size: 0.82rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.site-actions button:hover {
+  color: #c97d4e;
+}
+
+.auth-form button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.auth-form [role='alert'] {
+  margin: 0;
+  color: #a12a1a;
+}

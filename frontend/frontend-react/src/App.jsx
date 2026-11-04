@@ -2,18 +2,10 @@ import { Link, Route, Routes, useParams } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Home from './components/Home';
+import Login from './pages/Login';
 import './App.css';
 
 
-
-function Login() {
-  return (
-    <>
-      <h1>Iniciar sesión</h1>
-      <Link to="/">Volver al inicio</Link>
-    </>
-  );
-}
 
 function ProductDetail() {
   const { id } = useParams();
