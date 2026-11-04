@@ -69,3 +69,17 @@ body {
 .site-footer p {
   margin: 8px 0 0;
 }
+
+
+.site-nav {
+  display: flex;
+  gap: 16px;
+}
+
+.site-nav a {
+  color: inherit;
+}
+
+.site-nav a[aria-current='page'] {
+  font-weight: bold;
+}
