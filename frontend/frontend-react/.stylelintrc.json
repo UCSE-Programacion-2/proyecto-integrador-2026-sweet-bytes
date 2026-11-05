@@ -1,14 +1,29 @@
 {
-  "extends": ["stylelint-config-standard"],
+  "extends": [
+    "stylelint-config-standard"
+  ],
   "rules": {
     "color-hex-length": "short",
     "declaration-block-no-duplicate-properties": true,
     "declaration-block-no-redundant-longhand-properties": true,
-    "declaration-no-important": [true, { "severity": "warning" }],
+    "declaration-no-important": [
+      true,
+      {
+        "severity": "warning"
+      }
+    ],
     "property-no-unknown": true,
     "selector-type-no-unknown": true,
     "no-duplicate-selectors": true,
-    "no-empty-source": null
+    "no-empty-source": null,
+    "selector-class-pattern": [
+      "^[a-z][a-z0-9]*(-[a-z0-9]+)*(__[a-z0-9]+(-[a-z0-9]+)*)?(--[a-z0-9]+(-[a-z0-9]+)*)?$",
+      {
+        "message": "Usá nombres de clase en kebab-case (se permite BEM: bloque__elemento--modificador)"
+      }
+    ],
+    "media-feature-range-notation": "prefix",
+    "no-descending-specificity": null
   },
   "ignoreFiles": [
     "**/*.js",

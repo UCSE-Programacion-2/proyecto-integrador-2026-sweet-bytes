@@ -20,9 +20,12 @@ const DEFAULT_ORIGINS = [
   'http://localhost:3000',
 ];
 
+// En producción los orígenes salen solo de FRONTEND_URL; los locales son solo para desarrollo.
 const allowedOrigins = process.env.FRONTEND_URL
   ? process.env.FRONTEND_URL.split(',').map((origin) => origin.trim())
-  : DEFAULT_ORIGINS;
+  : process.env.NODE_ENV === 'production'
+    ? []
+    : DEFAULT_ORIGINS;
 
 app.use(
   cors({
