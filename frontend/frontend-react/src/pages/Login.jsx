@@ -58,6 +58,9 @@ export default function Login() {
         </button>
       </form>
 
+      <p>
+        ¿No tenés cuenta? <Link to="/registro">Creá una acá</Link>
+      </p>
       <Link to="/">Volver al inicio</Link>
     </>
   );

@@ -41,6 +41,15 @@ export function CartProvider({ children }) {
       });
     };
 
+    const decrementItem = (id) => {
+      setItems((current) =>
+        current.flatMap((item) => {
+          if (item.id !== id) return [item];
+          return item.quantity > 1 ? [{ ...item, quantity: item.quantity - 1 }] : [];
+        }),
+      );
+    };
+
     const removeItem = (id) => {
       setItems((current) => current.filter((item) => item.id !== id));
     };
@@ -50,6 +59,7 @@ export function CartProvider({ children }) {
     return {
       items,
       addItem,
+      decrementItem,
       removeItem,
       clearCart,
       totalItems: items.reduce((sum, item) => sum + item.quantity, 0),

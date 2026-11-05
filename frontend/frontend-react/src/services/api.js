@@ -59,3 +59,43 @@ export const updateProduct = (user, id, payload) =>
 
 export const deleteProduct = (user, id) =>
   adminRequest(`/api/products/${id}`, user, { method: 'DELETE' });
+
+export async function registerRequest(name, email, password) {
+  let response;
+  try {
+    response = await fetch(`${API_URL}/api/auth/register`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name, email, password }),
+    });
+  } catch {
+    throw new Error('No pudimos conectar con el servidor. Intentá de nuevo.');
+  }
+
+  const data = await response.json().catch(() => ({}));
+
+  if (!response.ok) {
+    throw new Error(data?.error?.message || 'No pudimos crear la cuenta. Intentá de nuevo.');
+  }
+
+  return data.user;
+}
+
+export async function fetchProduct(id) {
+  let response;
+  try {
+    response = await fetch(`${API_URL}/api/products/${id}`);
+  } catch {
+    throw new Error('No pudimos conectar con el servidor. Intentá de nuevo.');
+  }
+
+  if (response.status === 404) {
+    throw new Error('El producto no existe.');
+  }
+  if (!response.ok) {
+    throw new Error('No pudimos cargar el producto.');
+  }
+
+  const { item } = await response.json();
+  return item;
+}
