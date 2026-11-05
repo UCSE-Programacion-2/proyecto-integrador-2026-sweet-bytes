@@ -2,6 +2,8 @@ import { Link, Route, Routes, useParams } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Home from './components/Home';
+import AdminRoute from './components/AdminRoute';
+import Admin from './pages/Admin';
 import Login from './pages/Login';
 import './App.css';
 
@@ -36,6 +38,14 @@ export default function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
+          <Route
+            path="/admin"
+            element={
+              <AdminRoute>
+                <Admin />
+              </AdminRoute>
+            }
+          />
           <Route path="/productos/:id" element={<ProductDetail />} />
           <Route path="*" element={<NotFound />} />
         </Routes>

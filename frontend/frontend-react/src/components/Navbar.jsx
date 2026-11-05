@@ -1,4 +1,5 @@
 import { Link, NavLink } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
 import { useCart } from '../context/CartContext';
 
 const formatPrice = new Intl.NumberFormat('es-AR', {
@@ -8,6 +9,7 @@ const formatPrice = new Intl.NumberFormat('es-AR', {
 });
 
 export default function Navbar() {
+  const { user, isAuthenticated, isAdmin, logout } = useAuth();
   const { items, removeItem, totalItems, totalPrice } = useCart();
 
   return (
@@ -27,7 +29,17 @@ export default function Navbar() {
         </nav>
 
         <div className="site-actions">
-          <NavLink to="/login">Ingresar</NavLink>
+          {isAuthenticated ? (
+            <>
+              <span className="site-actions__greeting">Hola, {user.name}</span>
+              {isAdmin && <NavLink to="/admin">Admin</NavLink>}
+              <button type="button" onClick={logout}>
+                Salir
+              </button>
+            </>
+          ) : (
+            <NavLink to="/login">Ingresar</NavLink>
+          )}
 
           <details className="cart-menu">
             <summary>
