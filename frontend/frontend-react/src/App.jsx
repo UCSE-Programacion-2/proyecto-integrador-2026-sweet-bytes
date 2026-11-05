@@ -5,8 +5,6 @@ import Home from './components/Home';
 import Login from './pages/Login';
 import './App.css';
 
-
-
 function ProductDetail() {
   const { id } = useParams();
 
