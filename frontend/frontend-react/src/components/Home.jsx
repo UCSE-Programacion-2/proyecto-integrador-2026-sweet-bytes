@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import ProductCard from './ProductCard';
+import ProductCatalog from './ProductCatalog';
 import { API_URL } from '../services/api';
 
 const MARQUEE_ITEMS = [
@@ -96,17 +96,7 @@ export default function Home() {
           <p>Por ahora no hay productos disponibles.</p>
         )}
 
-        {products.length > 0 && (
-          <div className="product-grid">
-            {products.slice(0, 6).map((product) => (
-              <ProductCard key={product._id} product={product} />
-            ))}
-          </div>
-        )}
-
-        <p className="home-more">
-          <a href="#productos">Ver catálogo completo →</a>
-        </p>
+        {products.length > 0 && <ProductCatalog products={products} />}
       </section>
 
       <section id="nosotros" className="home-section home-about">

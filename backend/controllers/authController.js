@@ -34,7 +34,7 @@ const login = asyncHandler(async (req, res) => {
     throw new AppError(400, 'BAD_REQUEST', 'email y password son obligatorios');
   }
 
-  const user = await User.findOne({ email });
+  const user = await User.findOne({ email: String(email).trim().toLowerCase() });
   const isMatch = user && (await user.comparePassword(password));
 
   if (!isMatch) {

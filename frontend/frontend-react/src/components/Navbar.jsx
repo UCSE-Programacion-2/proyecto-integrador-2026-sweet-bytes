@@ -1,4 +1,5 @@
-import { Link, NavLink } from 'react-router-dom';
+import { useEffect, useRef } from 'react';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { useCart } from '../context/CartContext';
 
@@ -8,9 +9,44 @@ const formatPrice = new Intl.NumberFormat('es-AR', {
   maximumFractionDigits: 0,
 });
 
+function SectionLink({ id, children }) {
+  const { pathname } = useLocation();
+
+  function handleClick(event) {
+    if (pathname === '/') {
+      event.preventDefault();
+      document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+      window.history.replaceState(null, '', `/#${id}`);
+    }
+  }
+
+  return (
+    <Link to={`/#${id}`} onClick={handleClick}>
+      {children}
+    </Link>
+  );
+}
+
 export default function Navbar() {
   const { user, isAuthenticated, isAdmin, logout } = useAuth();
-  const { items, removeItem, totalItems, totalPrice } = useCart();
+  const { items, addItem, decrementItem, removeItem, totalItems, totalPrice } = useCart();
+  const cartMenu = useRef(null);
+  const location = useLocation();
+
+  useEffect(() => {
+    function closeOnOutsideClick(event) {
+      if (cartMenu.current?.open && !cartMenu.current.contains(event.target)) {
+        cartMenu.current.open = false;
+      }
+    }
+
+    document.addEventListener('click', closeOnOutsideClick);
+    return () => document.removeEventListener('click', closeOnOutsideClick);
+  }, []);
+
+  useEffect(() => {
+    if (cartMenu.current) cartMenu.current.open = false;
+  }, [location.pathname]);
 
   return (
     <header className="site-header">
@@ -21,11 +57,9 @@ export default function Navbar() {
         </Link>
 
         <nav className="site-nav" aria-label="Navegación principal">
-          <NavLink to="/" end>
-            Productos
-          </NavLink>
-          <a href="/#nosotros">Nosotros</a>
-          <a href="/#contacto">Contacto</a>
+          <SectionLink id="productos">Productos</SectionLink>
+          <SectionLink id="nosotros">Nosotros</SectionLink>
+          <SectionLink id="contacto">Contacto</SectionLink>
         </nav>
 
         <div className="site-actions">
@@ -38,10 +72,15 @@ export default function Navbar() {
               </button>
             </>
           ) : (
-            <NavLink to="/login">Ingresar</NavLink>
+            <>
+              <NavLink to="/login">Ingresar</NavLink>
+              <NavLink to="/registro" className="site-actions__signup">
+                Crear cuenta
+              </NavLink>
+            </>
           )}
 
-          <details className="cart-menu">
+          <details className="cart-menu" ref={cartMenu}>
             <summary>
               Mi Carrito
               {totalItems > 0 && (
@@ -58,8 +97,23 @@ export default function Navbar() {
                   <ul>
                     {items.map((item) => (
                       <li key={item.id}>
-                        <span>
-                          {item.name} × {item.quantity}
+                        <span className="cart-menu__name">{item.name}</span>
+                        <span className="cart-menu__qty">
+                          <button
+                            type="button"
+                            aria-label={`Quitar una unidad de ${item.name}`}
+                            onClick={() => decrementItem(item.id)}
+                          >
+                            −
+                          </button>
+                          <span>{item.quantity}</span>
+                          <button
+                            type="button"
+                            aria-label={`Agregar una unidad de ${item.name}`}
+                            onClick={() => addItem({ _id: item.id, name: item.name, price: item.price })}
+                          >
+                            +
+                          </button>
                         </span>
                         <button type="button" onClick={() => removeItem(item.id)}>
                           Quitar
@@ -70,6 +124,9 @@ export default function Navbar() {
                   <p>
                     <strong>Total: {formatPrice.format(totalPrice)}</strong>
                   </p>
+                  <Link to="/checkout" className="cart-menu__checkout">
+                    Finalizar compra
+                  </Link>
                 </>
               )}
             </div>

@@ -1,11 +1,12 @@
 import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { loginRequest } from '../services/api';
 
 export default function Login() {
   const { login } = useAuth();
   const navigate = useNavigate();
+  const location = useLocation();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -19,7 +20,7 @@ export default function Login() {
     try {
       const user = await loginRequest(email, password);
       login(user);
-      navigate('/');
+      navigate(location.state?.from || '/');
     } catch (err) {
       setError(err.message);
       setSubmitting(false);
@@ -58,6 +59,9 @@ export default function Login() {
         </button>
       </form>
 
+      <p>
+        ¿No tenés cuenta? <Link to="/registro" state={location.state}>Creá una acá</Link>
+      </p>
       <Link to="/">Volver al inicio</Link>
     </>
   );
