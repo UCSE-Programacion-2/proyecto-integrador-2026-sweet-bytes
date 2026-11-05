@@ -22,7 +22,7 @@ export default function Checkout() {
   const [order, setOrder] = useState(null);
 
   if (!isAuthenticated) {
-    return <Navigate to="/login" replace />;
+    return <Navigate to="/login" replace state={{ from: '/checkout' }} />;
   }
 
   function handleSubmit(event) {

@@ -9,6 +9,24 @@ const formatPrice = new Intl.NumberFormat('es-AR', {
   maximumFractionDigits: 0,
 });
 
+function SectionLink({ id, children }) {
+  const { pathname } = useLocation();
+
+  function handleClick(event) {
+    if (pathname === '/') {
+      event.preventDefault();
+      document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+      window.history.replaceState(null, '', `/#${id}`);
+    }
+  }
+
+  return (
+    <Link to={`/#${id}`} onClick={handleClick}>
+      {children}
+    </Link>
+  );
+}
+
 export default function Navbar() {
   const { user, isAuthenticated, isAdmin, logout } = useAuth();
   const { items, addItem, decrementItem, removeItem, totalItems, totalPrice } = useCart();
@@ -39,11 +57,9 @@ export default function Navbar() {
         </Link>
 
         <nav className="site-nav" aria-label="Navegación principal">
-          <NavLink to="/" end>
-            Productos
-          </NavLink>
-          <Link to="/#nosotros">Nosotros</Link>
-          <Link to="/#contacto">Contacto</Link>
+          <SectionLink id="productos">Productos</SectionLink>
+          <SectionLink id="nosotros">Nosotros</SectionLink>
+          <SectionLink id="contacto">Contacto</SectionLink>
         </nav>
 
         <div className="site-actions">
