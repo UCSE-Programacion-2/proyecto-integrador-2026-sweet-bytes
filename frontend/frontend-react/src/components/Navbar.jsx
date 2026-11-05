@@ -72,7 +72,12 @@ export default function Navbar() {
               </button>
             </>
           ) : (
-            <NavLink to="/login">Ingresar</NavLink>
+            <>
+              <NavLink to="/login">Ingresar</NavLink>
+              <NavLink to="/registro" className="site-actions__signup">
+                Crear cuenta
+              </NavLink>
+            </>
           )}
 
           <details className="cart-menu" ref={cartMenu}>

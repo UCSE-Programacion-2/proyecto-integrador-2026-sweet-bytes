@@ -954,3 +954,17 @@ body {
     display: none;
   }
 }
+
+.site-actions .site-actions__signup {
+  padding: 0.5rem 1rem;
+  border: 1px solid #e8c4a0;
+  border-radius: 999px;
+  background: #fdf6ee;
+  color: #6b3a20;
+  font-weight: 600;
+}
+
+.site-actions .site-actions__signup:hover {
+  border-color: #c97d4e;
+  color: #c97d4e;
+}
